@@ -1,0 +1,99 @@
+/* Full-Screen Styling */
+.services-container {
+  background: linear-gradient(135deg, #1e3c72, #2a5298); /* Dark blue gradient */
+  color: #fff;
+  text-align: center;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 20px;
+  position: relative;
+}
+
+/* Back Button (Moved to bottom-left corner) */
+.back-button {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  background: rgba(255, 255, 255, 0.3);
+  border: none;
+  padding: 12px 20px;
+  border-radius: 10px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.back-button:hover {
+  background: rgba(255, 255, 255, 0.5);
+}
+
+/* Service Header */
+.services-header h2 {
+  font-size: 2.8rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.services-header p {
+  font-size: 1.4rem;
+  opacity: 0.9;
+  font-style: italic;
+}
+
+/* Service Cards */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  margin-top: 30px;
+  width: 90%;
+  max-width: 1200px;
+}
+
+.service-card {
+  background: #ffffff;
+  color: #333;
+  padding: 25px;
+  border-radius: 14px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+.service-card h3 {
+  font-size: 1.7rem;
+  margin-bottom: 10px;
+}
+
+.service-card p {
+  font-size: 1.1rem;
+  opacity: 0.8;
+}
+
+/* Hover Effect */
+.service-card:hover {
+  transform: scale(1.08);
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.3);
+}
+
+/* Special Offer Section */
+.special-offer {
+  margin-top: 40px;
+  background: rgba(255, 255, 255, 0.2);
+  padding: 15px 20px;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.special-offer h3 {
+  font-size: 1.6rem;
+  color: #ffeb3b;
+}
+
+.special-offer p {
+  font-size: 1.2rem;
+  font-weight: bold;
+}

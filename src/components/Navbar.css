@@ -1,0 +1,91 @@
+/* Elegant Navbar */
+.navbar {
+  display: flex;
+  align-items: center;
+  padding: 15px 30px;
+  background: rgba(255, 255, 255, 0.15); /* Glass effect */
+  backdrop-filter: blur(10px);
+  box-shadow: 0px 6px 20px rgba(57, 15, 15, 0.379);
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+}
+
+/* Logo Container - Positioned to Left Corner */
+.logo-container {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  left: 80px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* Logo Styling */
+.logo {
+  width: 140px; /* Adjust size */
+  height: auto;
+  filter: drop-shadow(2px 2px 6px rgba(255, 255, 255, 0.8)); /* Orange Glow */
+}
+
+/* Navigation Links */
+.nav-links {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  flex-grow: 1;
+  width: 100%;
+  text-align: center;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #ffffff;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 12px 20px;
+  border-radius: 30px;
+  transition: all 0.3s ease-in-out;
+  position: relative;
+}
+
+/* Underline Effect */
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
+  width: 0%;
+  height: 3px;
+  background: #ff9800; /* Orange Accent */
+  transition: all 0.3s ease-in-out;
+  transform: translateX(-50%);
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+.nav-links a:hover {
+  color: #ff9800;
+}
+
+/* Responsive Navbar */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: row;
+    padding: 10px 15px;
+  }
+
+  .logo {
+    width: 120px;
+  }
+
+  .nav-links {
+    flex-direction: row;
+    gap: 15px;
+    font-size: 16px;
+  }
+}

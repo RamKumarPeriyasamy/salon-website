@@ -1,0 +1,113 @@
+/* Contact Page Container */
+.contact-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh; /* Full height */
+  background: linear-gradient(to right, #dc8118, #d8b17b); /* Smooth gradient */
+  padding: 40px 10px;
+}
+
+/* Contact Card */
+.contact-card {
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  width: 50%;
+  max-width: 800px;
+  text-align: center;
+}
+
+/* Contact Title */
+.contact-card h1 {
+  font-size: 28px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+/* Contact Info */
+.contact-info {
+  text-align: left;
+  font-size: 18px;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.contact-info .icon {
+  color: #ff5733;
+  margin-right: 8px;
+}
+
+/* Contact Form */
+.contact-form h2 {
+  font-size: 22px;
+  font-weight: bold;
+  color: #444;
+  margin-bottom: 10px;
+}
+
+.contact-form form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+/* Send Message Button */
+.contact-form button {
+  background: #ff5733;
+  color: white;
+  padding: 12px;
+  font-size: 18px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.contact-form button:hover {
+  background: #e64a19;
+}
+
+/* Back Button */
+.back-button {
+  margin-top: 15px;
+  background: black;
+  color: white;
+  padding: 8px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  border: none;
+}
+
+.back-button:hover {
+  background: #333;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .contact-card {
+    width: 90%;
+    padding: 20px;
+  }
+
+  .contact-card h1 {
+    font-size: 24px;
+  }
+
+  .contact-form input,
+  .contact-form textarea {
+    font-size: 14px;
+    padding: 10px;
+  }
+}

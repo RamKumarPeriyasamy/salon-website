@@ -1,0 +1,93 @@
+/* Scrollable Page with Dark Grey Background */
+.hairstyle-container {
+  background-color: #585656; /* Dark Grey */
+  min-height: 100vh;
+  padding: 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Title Styling */
+.title {
+  font-size: 3rem;
+  color: #ffcc00;
+  font-weight: bold;
+  margin-bottom: 30px;
+  text-transform: uppercase;
+}
+
+/* Scroll Container */
+.hairstyle-scroll {
+  display: flex;
+  flex-wrap: wrap; /* Allows multiple images in a row */
+  justify-content: center;
+  gap: 30px;
+  padding-bottom: 50px;
+}
+
+/* HairStyle Card - Bigger Size */
+.hairstyle-card {
+  position: relative;
+  width: 250px;  /* Increased Size */
+  height: 400px; /* Increased Size */
+  overflow: hidden;
+  border-radius: 15px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease-in-out;
+  cursor: pointer;
+  background: #1a1a1a; /* Slight contrast to dark grey */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Hairstyle Image */
+.hairstyle-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 15px;
+}
+
+/* Hairstyle Details - Glass Effect Popup BELOW the Image */
+.hairstyle-details {
+  position: absolute;
+  bottom: -100px; /* Initially hidden below */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  background: rgba(255, 255, 255, 0.15); /* Semi-transparent background */
+  backdrop-filter: blur(10px); /* Glass Effect */
+  color: white;
+  padding: 15px;
+  text-align: center;
+  border-radius: 10px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.4s ease-in-out, bottom 0.4s ease-in-out;
+}
+
+/* Title in the Popup */
+.hairstyle-details h3 {
+  font-size: 22px;
+  color: #ffcc00;
+  margin-bottom: 5px;
+}
+
+/* Paragraph in the Popup */
+.hairstyle-details p {
+  font-size: 16px;
+  color: #ddd;
+}
+
+/* Show Popup Below the Image on Hover */
+.hairstyle-card:hover .hairstyle-details {
+  opacity: 1;
+  visibility: visible;
+  bottom: -20px; /* Moves up smoothly below the image */
+}
+
+.hairstyle-card:hover {
+  transform: scale(1.05);
+}

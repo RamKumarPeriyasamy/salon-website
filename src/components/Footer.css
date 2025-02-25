@@ -1,44 +1,11 @@
-/* Footer styling */
-footer {
-  background: linear-gradient(135deg, #b354f2, #db3fb7); /* Gradient background */
-  color: white;
-  text-align: center;
-  padding: 40px 20px;
-  font-family: 'Arial', sans-serif;
-}
-
-/* Social links container */
-.social-links {
-  display: flex;
-  justify-content: center;
-  gap: 20px; /* Space between links */
-  margin-top: 15px;
-}
-
-/* Social links styling */
-.social-links a {
-  color: white;
-  text-decoration: none;
-  font-size: 1.1rem;
-  display: flex;
-  align-items: center;
-  gap: 8px; /* Space between icon and text */
-  transition: color 0.3s ease, transform 0.3s ease;
-}
-
-.social-links a:hover {
-  color: #ff9a9e; /* Light pink on hover */
-  transform: translateY(-3px); /* Slight lift on hover */
-}
-
-/* Font Awesome icons */
-.social-links i {
-  font-size: 1.5rem;
-}
-
-/* Copyright text */
-footer p {
-  margin: 0;
-  font-size: 1rem;
-  opacity: 0.8;
+.transparent-footer {
+  position: fixed;
+  bottom: 0;
+  width: 95%;
+  background: transparent;
+  color: rgb(222, 217, 217);
+  text-align: right;
+  padding: 10px 5px;
+  font-size: 9px;
+  font-weight: bold;
 }

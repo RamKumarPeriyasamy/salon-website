@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Home from './pages/Home';
-import Services from './pages/Service';
+import Services from './pages/Service'; // ✅ Fixed import
 import About from './pages/About';
 import Contact from './pages/Contact';
 import HairStyle from './pages/HairStyle';
@@ -23,17 +23,9 @@ const App = () => {
         <Route path="/hairstyle" element={<HairStyle />} />
         <Route path="/location" element={<Location />} />
         <Route path="/coloring" element={<Coloring />} />
-        <Route
-          path="/facial-massage"
-          element={<FacialMassage
-          />}
-        />      
-
+        <Route path="/facialmassage" element={<FacialMassage />} /> {/* ✅ Fixed path to lowercase */}
       </Routes>
-      <Footer
-        title="Sundaram Salon"
-        description="© 2021 Sundaram Salon. All rights reserved."
-      />
+      <Footer />
     </Router>
   );
 };

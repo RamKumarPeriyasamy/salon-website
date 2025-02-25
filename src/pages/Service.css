@@ -20,21 +20,25 @@
   100% { background-position: 0% 50%; }
 }
 
-/* Back Button (Top-Left Placement) */
 .back-arrow {
-  position: fixed;
-  bottom: 20px;
-  left: 20px;
-  font-size: 28px;
-  color: #333;
+  position: fixed;  /* Fixed position so it stays at the bottom */
+  bottom: 20px;  /* Moves it slightly above the bottom */
+  left: 20px;  /* Aligns it to the left */
+  font-size: 24px;  /* Adjust size for better visibility */
   cursor: pointer;
-  transition: transform 0.2s ease-in-out;
+  color: white;  /* Adjust color if needed */
+  z-index: 1000;  /* Ensures it's above other elements */
+  background: rgba(0, 0, 0, 0.5); /* Optional: Adds slight background for visibility */
+  padding: 10px;
+  border-radius: 50%; /* Makes it circular */
+  transition: background 0.3s ease-in-out;
 }
 
 .back-arrow:hover {
-  transform: scale(1.2);
-  color: #000;
+  background: rgba(255, 255, 255, 0.3); /* Light hover effect */
 }
+
+
 
 
 /* Service Header */

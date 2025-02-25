@@ -23,11 +23,22 @@
   transform: translateY(-50%);
 }
 
-/* Logo Styling */
 .logo {
   width: 140px; /* Adjust size */
   height: auto;
-  filter: drop-shadow(2px 2px 6px rgba(255, 255, 255, 0.8)); /* Orange Glow */
+  filter: 
+    drop-shadow(0 0 10px rgba(255, 215, 0, 0.7)) /* Golden outer glow */
+    drop-shadow(0 0 20px rgba(255, 215, 0, 0.5)) /* Medium glow */
+    drop-shadow(0 0 30px rgba(255, 215, 0, 0.3)); /* Subtle inner glow */
+  transition: filter 0.3s ease-in-out; /* Smooth transition for hover effect */
+}
+
+/* Hover effect for logo */
+.logo:hover {
+  filter: 
+    drop-shadow(0 0 15px rgba(255, 215, 0, 0.9)) /* Stronger outer glow */
+    drop-shadow(0 0 25px rgba(255, 215, 0, 0.7)) /* Medium glow */
+    drop-shadow(0 0 35px rgba(255, 215, 0, 0.5)); /* Subtle inner glow */
 }
 
 /* Navigation Links */

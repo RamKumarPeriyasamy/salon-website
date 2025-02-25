@@ -3,8 +3,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  background:  linear-gradient(to right, #50394e, #49534f); /* Deep Orange to Bright Gold */
+  height: 105vh;
+  background:  linear-gradient(to right, #542658, #49534f); /* Deep Orange to Bright Gold */
   color: rgb(252, 250, 250);
   text-align: center;
   padding: 20px;
@@ -12,11 +12,11 @@
 
 /* About Content with Glassmorphism */
 .about-content {
-  background: rgba(50, 46, 44, 0.15);
+  background: rgba(1, 0, 0, 0.15);
   padding: 50px;
   border-radius: 15px;
   box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
-  max-width: 600px;
+  max-width: 1000px;
   width: 90%;
   backdrop-filter: blur(15px);
   border: 2px solid rgba(255, 255, 255, 0.2);
@@ -44,7 +44,7 @@
 .about-title {
   font-size: 2.8rem;
   margin-bottom: 15px;
-  background: linear-gradient(to right, #dbd2c9e2, #f79606);
+  background: linear-gradient(to right, #ffffffe2, #f79606);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -58,7 +58,7 @@
 
 /* Home Button Styling */
 .home-button {
-  background: linear-gradient(90deg, #FF5722, #FF9800); /* Deep Orange to Bright Orange */
+  background: linear-gradient(90deg, #ea7907, #FF9800); /* Deep Orange to Bright Orange */
   color: rgb(69, 64, 64);
   padding: 14px 25px;
   border: none;

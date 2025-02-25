@@ -34,10 +34,10 @@ const Home = () => {
           <div className="service-box" onClick={() => navigate('/hairstyle')}>
             <h3>💇‍♂️ Hair Styling</h3>
           </div>
-          <div className="service-box" onClick={() => navigate('/services')}>
+          <div className="service-box" onClick={() => navigate('/facial-massage')}>
             <h3>💆‍♀️ Facial & Massage</h3>
           </div>
-          <div className="service-box" onClick={() => navigate('/services')}>
+          <div className="service-box" onClick={() => navigate('/coloring')}>
             <h3>🎨 Hair Coloring</h3>
           </div>
         </div>

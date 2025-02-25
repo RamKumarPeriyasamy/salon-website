@@ -17,8 +17,13 @@ const About = () => {
         {/* About Info */}
         <h1 className="about-title">About Us</h1>
         <p className="about-text">
-          Established in <strong>1971</strong> by <strong>Mr. Anadhappan R.</strong> in <strong>Mattakadai</strong>, Sundaram Salon has been a landmark for excellence in hairdressing. 
-          With a legacy of unmatched styling expertise, we continue to set new trends and deliver premium salon services.
+          Established in <strong>1971</strong> by  <strong >Mr. Anadhappan R.</strong> in <strong>Mattakadai</strong> , Sundaram Salon has long been a symbol of 
+          excellence in hairdressing. With a rich legacy of unparalleled styling expertise,
+           the salon has consistently set new trends and delivered premium services.
+            In<strong>2013, </strong> the reins were handed over to <strong>Mr. Periyasamy A.</strong>, the son of the founder,
+             who continues to uphold the salon's esteemed reputation and commitment to quality.
+              Under his leadership, Sundaram Salon remains dedicated to providing exceptional 
+              experiences and maintaining its status as a trusted name in the industry.
         </p>
 
         {/* Home Button */}

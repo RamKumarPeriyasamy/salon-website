@@ -1,7 +1,6 @@
-
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { FaPhoneAlt, FaEnvelope, FaMapMarkerAlt } from 'react-icons/fa'; // Import icons
+import { FaPhoneAlt, FaEnvelope, FaMapMarkerAlt, FaArrowLeft } from 'react-icons/fa'; // Import arrow icon
 import './Contact.css';
 
 const Contact = () => {
@@ -9,6 +8,12 @@ const Contact = () => {
 
   return (
     <div className="contact-container">
+      {/* Back Button with Only an Arrow */}
+      <FaArrowLeft 
+        className="back-arrow" 
+        onClick={() => navigate(-1)} 
+      />
+
       <div className="contact-card">
         <h1>Contact Us</h1>
         <div className="contact-info">
@@ -28,8 +33,6 @@ const Contact = () => {
           </form>
         </div>
 
-        {/* Back Button */}
-        <button className="back-button" onClick={() => navigate(-1)}>⬅ Back</button>
       </div>
     </div>
   );

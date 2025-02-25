@@ -4,8 +4,16 @@
   justify-content: center;
   align-items: center;
   min-height: 100vh; /* Full height */
-  background: linear-gradient(to right, #dc8118, #d8b17b); /* Smooth gradient */
+  background: linear-gradient(to right,#e39a65, #c66a00); /* Smooth gradient */
+  background-size: 200% 200%;
+  animation: gradientAnimation 5s ease infinite;
   padding: 40px 10px;
+}
+
+@keyframes gradientAnimation {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
 /* Contact Card */
@@ -56,7 +64,7 @@
 
 .contact-form input,
 .contact-form textarea {
-  width: 100%;
+  width: 96.%;
   padding: 12px;
   font-size: 16px;
   border: 1px solid #ccc;
@@ -67,7 +75,7 @@
 .contact-form button {
   background: #ff5733;
   color: white;
-  padding: 12px;
+  padding: 13px;
   font-size: 18px;
   border: none;
   border-radius: 8px;
@@ -79,19 +87,27 @@
   background: #e64a19;
 }
 
-/* Back Button */
-.back-button {
-  margin-top: 15px;
-  background: black;
-  color: white;
-  padding: 8px 15px;
-  border-radius: 5px;
+.back-arrow {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  font-size: 28px;
+  color: #fdfdfd;
   cursor: pointer;
-  border: none;
+  transition: transform 0.2s ease-in-out;
 }
 
-.back-button:hover {
-  background: #333;
+.back-arrow:hover {
+  transform: scale(1.2);
+  color: #000;
+}
+
+
+
+/* Make sure it stays inside the main container */
+.contact-container, .services-container, .location-container {
+  position: relative; /* Ensures Back button is within the container */
+  padding-top: 60px; /* Avoid overlap with content */
 }
 
 /* Responsive Styles */

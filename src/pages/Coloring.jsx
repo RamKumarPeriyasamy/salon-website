@@ -1,6 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { FaArrowLeft } from "react-icons/fa";
 import '../pages/Coloring.css';
 
 // Hair Dye Data
@@ -24,11 +22,7 @@ const hairDyeColors = [
 const HairDye = () => {
   return (
     <div className="hair-dye-container">
-      {/* Back Button */}
-      <Link to="/" className="back-arrow">
-        <FaArrowLeft />
-      </Link>
-
+   
       {/* Page Title */}
       <h1 className="title">Hair Dye Colors</h1>
       <p className="description">

@@ -87,21 +87,6 @@
   background: #e64a19;
 }
 
-.back-arrow {
-  position: fixed;
-  bottom: 20px;
-  left: 20px;
-  font-size: 28px;
-  color: #fdfdfd;
-  cursor: pointer;
-  transition: transform 0.2s ease-in-out;
-}
-
-.back-arrow:hover {
-  transform: scale(1.2);
-  color: #000;
-}
-
 
 
 /* Make sure it stays inside the main container */

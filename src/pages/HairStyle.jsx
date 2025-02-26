@@ -1,6 +1,4 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
-import { FaArrowLeft } from "react-icons/fa";
 import "../pages/HairStyle.css";
 
 // Import images
@@ -28,12 +26,11 @@ const hairstyles = [
 ];
 
 const HairStyle = () => {
-  const navigate = useNavigate();
+
 
   return (
     <div className="hairstyle-container">
-      {/* Back Button */}
-      <FaArrowLeft className="back-arrow" onClick={() => navigate(-1)} />
+     
 
       <h1 className="title">💇‍♂️ Hair Styles</h1>
 

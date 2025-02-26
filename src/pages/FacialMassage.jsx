@@ -1,7 +1,5 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
 import "./FacialMassage.css";
-import { FaArrowLeft } from "react-icons/fa";
 import GlowFacial from "../assets/Black1.webp";
 import HydratingFacial from "../assets/greengrass.jpg";       
 import AntiAgingFacial from "../assets/merun.jpg";
@@ -10,7 +8,7 @@ import DeepTissueMassage from "../assets/UntitledLogo.png";
 import AromatherapyMassage from "../assets/vilot2.jpg";
 
 const FacialMassage = () => {
-  const navigate = useNavigate();
+  
 
   const facialServices = [
     { name: "Glow Facial", image: GlowFacial },
@@ -27,12 +25,6 @@ const FacialMassage = () => {
   return (
       
     <div className="facial-massage-container">
-      {/* Back Button */}
-       {/* Back Button with Only an Arrow */}
-       <FaArrowLeft 
-        className="back-arrow" 
-        onClick={() => navigate(-1)} 
-      />
 
       {/* Page Header */}
       <h2 className="page-title">💆‍♀️ Facial & Massage Services</h2>

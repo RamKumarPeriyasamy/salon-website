@@ -1,6 +1,5 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { FaArrowLeft } from 'react-icons/fa'; 
 import './Service.css';
 
 const Services = () => {
@@ -16,13 +15,7 @@ const Services = () => {
   return (
     <div className="services-container">
       
-      {/* Back Button - Fixed Visibility */}
-      <div className="back-button-container">
-        <FaArrowLeft 
-          className="back-arrow" 
-          onClick={() => navigate(-1)} 
-        />
-      </div>
+      
 
       {/* Hero Section */}
       <div className="services-header">

@@ -1,18 +1,12 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
-import { FaArrowLeft } from "react-icons/fa"; // Import back arrow icon
 import "./Location.css"; // Import CSS for styling
 
 const Location = () => {
-  const navigate = useNavigate();
+
 
   return (
     <div className="location-container">
-      {/* Back Button with Only an Arrow */}
-      <FaArrowLeft 
-        className="back-arrow" 
-        onClick={() => navigate(-1)} 
-      />
+      
 
       <h2 className="location-title">📍 Our Salon Location</h2>
       <p className="location-description">

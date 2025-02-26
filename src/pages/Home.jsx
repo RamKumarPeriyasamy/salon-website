@@ -34,7 +34,7 @@ const Home = () => {
           <div className="service-box" onClick={() => navigate('/hairstyle')}>
             <h3>💇‍♂️ Hair Styling</h3>
           </div>
-          <div className="service-box" onClick={() => navigate('/facial-massage')}>
+          <div className="service-box" onClick={() => navigate('/facialmassage')}>
             <h3>💆‍♀️ Facial & Massage</h3>
           </div>
           <div className="service-box" onClick={() => navigate('/coloring')}>

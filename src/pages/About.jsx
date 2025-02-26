@@ -30,6 +30,7 @@ const About = () => {
         <button className="home-button" onClick={() => navigate('/')}>Go to Home</button>
       </div>
     </div>
+    
   );
 };
 

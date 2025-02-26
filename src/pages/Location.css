@@ -71,20 +71,4 @@
   }
   
   /* Back Button */
-  .back-button {
-    position: absolute;
-    top: 20 px;
-    left: 20 px;
-    background: rgba(255, 255, 255, 0.3);
-    border: none;
-    padding: 12px 20px;
-    border-radius: 10px;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: 0.3s;   
-  }
-  
-  .back-button:hover {
-    background: rgba(255, 255, 255, 0.5);
-  }
   

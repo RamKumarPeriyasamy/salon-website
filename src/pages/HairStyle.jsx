@@ -2,7 +2,7 @@ import React from "react";
 import "../pages/HairStyle.css";
 
 // Import images
-import Black1 from "../assets/Black1.webp";
+import Black1 from "../assets/Picsart_25-03-01_10-41-08-388.jpg";
 import Giphy from "../assets/giphy.gif";
 import Giphi from "../assets/merun.jpg";
 import Giphi1 from "../assets/greengrass.jpg";

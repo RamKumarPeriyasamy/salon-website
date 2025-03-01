@@ -1,8 +1,8 @@
 import React from "react";
 import "./FacialMassage.css";
-import GlowFacial from "../assets/Black1.webp";
-import HydratingFacial from "../assets/greengrass.jpg";       
-import AntiAgingFacial from "../assets/merun.jpg";
+import GlowFacial from "../assets/image copy.png";
+import HydratingFacial from "../assets/Picsart_25-03-01_10-41-08-388.jpg";       
+import AntiAgingFacial from "../assets/Picsart_25-03-01_10-41-40-668.jpg";
 import RelaxingMassage from "../assets/PURPLE.jpg";
 import DeepTissueMassage from "../assets/UntitledLogo.png";
 import AromatherapyMassage from "../assets/vilot2.jpg";

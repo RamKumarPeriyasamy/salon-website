@@ -3,7 +3,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh; /* Full height */
+  min-height: 90vh; /* Full height */
   background: linear-gradient(to right,#e39a65, #c66a00); /* Smooth gradient */
   background-size: 200% 200%;
   animation: gradientAnimation 5s ease infinite;
@@ -22,10 +22,13 @@
   padding: 30px;
   border-radius: 12px;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-  width: 50%;
+  width: 45%;
   max-width: 800px;
   text-align: center;
+  margin: 100px auto; /* Push it down from the top */
 }
+
+
 
 /* Contact Title */
 .contact-card h1 {
@@ -111,4 +114,48 @@
     font-size: 14px;
     padding: 10px;
   }
+}
+/* Social Media Styling */
+.social-media {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.social-media h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.social-icon {
+  display: inline-flex;
+  align-items: center;
+  margin: 5px;
+  text-decoration: none;
+  padding: 8px 15px;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #fff;
+  transition: 0.3s;
+}
+
+.social-icon svg {
+  margin-right: 8px;
+  font-size: 20px;
+}
+
+.gmail {
+  background-color: #db4437;
+}
+
+.facebook {
+  background-color: #1877f2;
+}
+
+.instagram {
+  background-color:#f450ad;
+}
+
+.social-icon:hover {
+  opacity: 0.8;
 }

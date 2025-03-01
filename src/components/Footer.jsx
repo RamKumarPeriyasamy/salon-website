@@ -28,6 +28,7 @@ const Footer = () => {
     return (
         <footer className="transparent-footer">
             <p>Created by RamKumarPeriyasamy © 2025</p>
+            
         </footer>
     );
 };

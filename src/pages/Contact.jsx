@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { FaPhoneAlt, FaEnvelope, FaMapMarkerAlt } from 'react-icons/fa';
+import { FaPhoneAlt, FaEnvelope, FaMapMarkerAlt, FaFacebook, FaInstagram, FaGoogle } from 'react-icons/fa';
 import './Contact.css';
 
 const Contact = () => {
@@ -35,10 +35,26 @@ const Contact = () => {
     <div className="contact-container">
       <div className="contact-card">
         <h1>Contact Us</h1>
+        
+        {/* Contact Info */}
         <div className="contact-info">
           <p><FaPhoneAlt className="icon" /> <strong>Phone:</strong> +91 97872 38247</p>
           <p><FaEnvelope className="icon" /> <strong>Email:</strong> periyasamy1801@gmail.com</p>
           <p><FaMapMarkerAlt className="icon" /> <strong>Address:</strong> 132, North Raja Street, Opp Nila Stores, Mattakadai, Tuticorin -1</p>
+        </div>
+
+        {/* Social Media Links */}
+        <div className="social-media">
+          <h3>Follow Us</h3>
+          <a href="mailto:periyasamy1801@gmail.com" target="_blank" rel="noopener noreferrer" className="social-icon gmail">
+            <FaGoogle /> Gmail
+          </a>
+          <a href="https://www.facebook.com/your-facebook-profile" target="_blank" rel="noopener noreferrer" className="social-icon facebook">
+            <FaFacebook /> Facebook
+          </a>
+          <a href="https://www.instagram.com/your-instagram-profile" target="_blank" rel="noopener noreferrer" className="social-icon instagram">
+            <FaInstagram /> Instagram
+          </a>
         </div>
 
         {/* Contact Form */}

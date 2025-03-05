@@ -1,0 +1,90 @@
+/* Booking.css */
+
+@keyframes wave {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+  
+  body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(-45deg, #04ebf3, #51e3f1, #c3dada, #e7f6f9);
+    background-size: 400% 400%;
+    animation: wave 10s ease infinite;
+    font-family: 'Arial', sans-serif;
+  }
+  
+  .booking-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+  
+  .booking-card {
+    background: rgba(232, 231, 231, 0.9);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    width: 350px;
+  }
+  
+  .booking-logo img {
+    width: 150px;
+    margin-bottom: 10px;
+    filter: drop-shadow(0 0 15px rgb(244, 244, 243));
+    animation: glow 1.5s infinite alternate;
+  }
+  
+  .booking-title {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  .booking-form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .booking-input, .booking-button {
+    padding: 10px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+  }
+  
+  .booking-input {
+    background: #f5f5f5;
+    transition: 0.3s ease-in-out;
+  }
+  
+  .booking-input:focus {
+    background: #e0e0e0;
+    outline: none;
+  }
+  
+  .booking-button {
+    background: #ff758c;
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  
+  .booking-button:hover {
+    background: #ff5c72;
+  }
+  

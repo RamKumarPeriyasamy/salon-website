@@ -8,7 +8,7 @@ const Home = () => {
       <img src={logo} alt="Salon Logo" className="logo" />
       <h1 className="title">Welcome to Sundaram Salon</h1>
       <h2 className="subtitle">
-        Your one-stop destination for all your beauty needs
+      "Life is more beautiful when you meet the right stylist."
       </h2>
       <Link to="/booking" className="glassy-button">
         Book an Appointment

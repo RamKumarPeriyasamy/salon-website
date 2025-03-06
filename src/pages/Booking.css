@@ -1,5 +1,4 @@
-/* Booking.css */
-
+/* Background Animation */
 @keyframes wave {
     0% {
       background-position: 0% 50%;
@@ -10,9 +9,10 @@
     100% {
       background-position: 0% 50%;
     }
-  }
-  
-  body {
+}
+
+/* Full Page Setup */
+body {
     margin: 0;
     padding: 0;
     display: flex;
@@ -23,68 +23,130 @@
     background-size: 400% 400%;
     animation: wave 10s ease infinite;
     font-family: 'Arial', sans-serif;
-  }
-  
-  .booking-container {
+}
+
+/* Center the Booking Form */
+.booking-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100%;
-  }
-  
-  .booking-card {
-    background: rgba(232, 231, 231, 0.9);
+    width: 90%;
+}
+
+/* Booking Card */
+.booking-card {
+    background: rgba(255, 255, 255, 0.9);
     padding: 30px;
     border-radius: 15px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     text-align: center;
-    width: 350px;
-  }
-  
-  .booking-logo img {
-    width: 150px;
-    margin-bottom: 10px;
-    filter: drop-shadow(0 0 15px rgb(244, 244, 243));
-    animation: glow 1.5s infinite alternate;
-  }
-  
-  .booking-title {
+    width: 450px;
+}
+
+/* Logo Styling */
+.booking-logo img {
+    width: 100px;
+    margin-bottom: 1px;
+    filter: drop-shadow(0 0 15px rgb(21, 21, 21));
+    animation: glow 2.5s infinite alternate;
+}
+
+/* Title */
+.booking-title {
     font-size: 24px;
     color: #333;
     margin-bottom: 20px;
-  }
-  
-  .booking-form {
+}
+
+/* Form Layout */
+.booking-form {
     display: flex;
     flex-direction: column;
-  }
-  
-  .booking-input, .booking-button {
-    padding: 10px;
+}
+
+/* General Input Styles */
+.booking-input, .booking-button {
+    padding: 12px;
     margin: 10px 0;
     border: none;
     border-radius: 8px;
     font-size: 16px;
-  }
-  
-  .booking-input {
+}
+
+/* Input Styling */
+.booking-input {
     background: #f5f5f5;
     transition: 0.3s ease-in-out;
-  }
-  
-  .booking-input:focus {
+    border: 1px solid #ddd;
+}
+
+/* Focus Effect */
+.booking-input:focus {
     background: #e0e0e0;
     outline: none;
-  }
-  
-  .booking-button {
+    border-color: #ff758c;
+}
+
+/* Booking Button */
+.booking-button {
     background: #ff758c;
     color: white;
     cursor: pointer;
     transition: 0.3s;
+    font-weight: bold;
+}
+
+.booking-button:hover {
+    background: #c542c5;
+}
+
+/* Phone Number Input Styling */
+.phone-input {
+    display: flex;
+    align-items: center;
+    background: #f5f5f5;
+    padding: 10px;
+    border-radius: 8px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+}
+
+/* Country Code Dropdown */
+.phone-input select {
+    border: none;
+    background: transparent;
+    font-size: 16px;
+    padding: 5px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+/* Phone Number Field */
+.phone-input input {
+    flex: 1;
+    border: none;
+    background: transparent;
+    font-size: 16px;
+    outline: none;
+}
+
+/* Restrict time input field size */
+.booking-input[type="time"] {
+    text-align: center;
+}
+
+.error-message {
+    color: red;
+    font-size: 14px;
+    margin-bottom: 10px;
+    text-align: center;
   }
   
-  .booking-button:hover {
-    background: #ff5c72;
-  }
-  
+
+/* Make it responsive */
+@media (max-width: 768px) {
+    .booking-card {
+        width: 90%;
+        padding: 20px;
+    }
+}

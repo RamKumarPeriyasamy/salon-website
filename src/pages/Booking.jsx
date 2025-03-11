@@ -1,7 +1,9 @@
-import axios from "axios"; // Import Axios
+import axios from "axios";
 import { useState } from "react";
-import "./Booking.css"; // Import CSS
-import logo from "../assets/logo4.png"; // Add your logo
+import "./Booking.css"; 
+import logo from "../assets/logo4.png"; 
+
+const API_URL = import.meta.env.VITE_BACKEND_API; // ✅ Use environment variable for API URL
 
 function Booking() {
   const [name, setName] = useState("");
@@ -12,6 +14,7 @@ function Booking() {
   const [location, setLocation] = useState("");
   const [stylist, setStylist] = useState("");
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false); // ✅ Add loading state
 
   // ✅ Validate 10-digit phone number
   const validatePhoneNumber = (num) => /^[0-9]{10}$/.test(num);
@@ -31,7 +34,7 @@ function Booking() {
     return `${String(hours).padStart(2, "0")}:${String(minutes).padStart(2, "0")}`;
   };
 
-  // ✅ Validate time between 7:00 AM and 8:00 PM (Converted 24-hour format)
+  // ✅ Validate time between 7:00 AM and 8:00 PM
   const validateTime = (selectedTime) => {
     const convertedTime = convertTo24HourFormat(selectedTime);
     const [hours, minutes] = convertedTime.split(":").map(Number);
@@ -53,6 +56,7 @@ function Booking() {
     }
 
     setError(""); // Clear errors when validation passes
+    setLoading(true); // ✅ Show loading state
 
     const appointmentData = {
       name,
@@ -64,7 +68,11 @@ function Booking() {
     };
 
     try {
-      const response = await axios.post("http://localhost:5000/book-appointment", appointmentData);
+      const token = localStorage.getItem("token"); // ✅ Get token from local storage
+      const headers = token ? { Authorization: `Bearer ${token}` } : {}; // ✅ Send token if available
+
+      const response = await axios.post(`${API_URL}/appointments`, appointmentData, { headers });
+
       alert(response.data.message);
       setName("");
       setPhone("");
@@ -74,8 +82,10 @@ function Booking() {
       setLocation("");
       setStylist("");
     } catch (error) {
+      console.error("❌ Booking Error:", error.response?.data || error.message);
       alert("❌ Error Booking Appointment");
-      console.error("Booking Error:", error);
+    } finally {
+      setLoading(false); // ✅ Hide loading state
     }
   };
 
@@ -86,7 +96,8 @@ function Booking() {
           <img src={logo} alt="Salon Logo" />
         </div>
         <h1 className="booking-title">📅 Book Your Appointment</h1>
-        {error && <p className="error-message">{error}</p>} {/* ✅ Show validation errors */}
+        {error && <p className="error-message">{error}</p>} 
+
         <form onSubmit={handleSubmit} className="booking-form">
           <input type="text" placeholder="Your Name" value={name} onChange={(e) => setName(e.target.value)} className="booking-input" required />
 
@@ -108,61 +119,33 @@ function Booking() {
           {/* Time Picker (12-Hour Format with AM/PM) */}
           <select value={time} onChange={(e) => setTime(e.target.value)} className="booking-input" required>
             <option value="">Select Time</option>
-            <option value="07:00 AM">07:00 AM</option>
-            <option value="07:30 AM">07:30 AM</option>
-            <option value="08:00 AM">08:00 AM</option>
-            <option value="08:30 AM">08:30 AM</option>
-            <option value="09:00 AM">09:00 AM</option>
-            <option value="09:30 AM">09:30 AM</option>
-            <option value="10:00 AM">10:00 AM</option>
-            <option value="10:30 AM">10:30 AM</option>
-            <option value="11:00 AM">11:00 AM</option>
-            <option value="11:30 AM">11:30 AM</option>
-            <option value="12:00 PM">12:00 PM</option>
-            <option value="12:30 PM">12:30 PM</option>
-            <option value="01:00 PM">01:00 PM</option>
-            <option value="01:30 PM">01:30 PM</option>
-            <option value="02:00 PM">02:00 PM</option>
-            <option value="02:30 PM">02:30 PM</option>
-            <option value="03:00 PM">03:00 PM</option>
-            <option value="03:30 PM">03:30 PM</option>
-            <option value="04:00 PM">04:00 PM</option>
-            <option value="04:30 PM">04:30 PM</option>
-            <option value="05:00 PM">05:00 PM</option>
-            <option value="05:30 PM">05:30 PM</option>
-            <option value="06:00 PM">06:00 PM</option>
-            <option value="06:30 PM">06:30 PM</option>
-            <option value="07:00 PM">07:00 PM</option>
-            <option value="07:30 PM">07:30 PM</option>
-            <option value="08:00 PM">08:00 PM</option>
+            {["07:00 AM", "07:30 AM", "08:00 AM", "08:30 AM", "09:00 AM", "09:30 AM", "10:00 AM", "10:30 AM", "11:00 AM", "11:30 AM", "12:00 PM",
+              "12:30 PM", "01:00 PM", "01:30 PM", "02:00 PM", "02:30 PM", "03:00 PM", "03:30 PM", "04:00 PM", "04:30 PM", "05:00 PM", "05:30 PM",
+              "06:00 PM", "06:30 PM", "07:00 PM", "07:30 PM", "08:00 PM"].map((t) => (
+              <option key={t} value={t}>{t}</option>
+            ))}
           </select>
 
           {/* Location Selection */}
           <select value={location} onChange={(e) => setLocation(e.target.value)} className="booking-input" required>
             <option value="">Select District</option>
-            <option value="Chennai">Chennai</option>
-            <option value="Thoothukudi">Thoothukudi</option>
-            <option value="Salem">Salem</option>
-            <option value="Madurai">Madurai</option>
-            <option value="Coimbatore">Coimbatore</option>
-        
+            {["Chennai", "Thoothukudi", "Salem", "Madurai", "Coimbatore"].map((city) => (
+              <option key={city} value={city}>{city}</option>
+            ))}
           </select>
 
-               {/* Stylist Selection */}
-                <select
-            value={stylist}
-            onChange={(e) => setStylist(e.target.value)}
-            className="booking-input"
-            required
-          >
+          {/* Stylist Selection */}
+          <select value={stylist} onChange={(e) => setStylist(e.target.value)} className="booking-input" required>
             <option value="">Select Stylist</option>
-            <option value="Periyasamy A">Periyasamy A</option>
-            <option value="Teja Mani P">Teja Mani P</option>
-            <option value="Ram Kumar P">Ram Kumar P</option>
+            {["Periyasamy A", "Teja Mani P", "Ram Kumar P"].map((stylist) => (
+              <option key={stylist} value={stylist}>{stylist}</option>
+            ))}
           </select>
 
           {/* Submit Button */}
-          <button type="submit" className="booking-button">🚀 Book Now</button>
+          <button type="submit" className="booking-button" disabled={loading}>
+            {loading ? "⏳ Booking..." : "🚀 Book Now"}
+          </button>
         </form>
       </div>
     </div>

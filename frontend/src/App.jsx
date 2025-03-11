@@ -1,15 +1,19 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import AdminDashboard from "./pages/AdminDashboard";  // ✅ Only admin-related imports
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
+import AdminDashboard from "./pages/AdminDashboard";
+import Login from "./pages/Login";
+import { getUser } from "./services/authService"; 
+
+const PrivateRoute = ({ element }) => {
+  return getUser() ? element : <Navigate to="/login" />;
+};
 
 function App() {
   return (
     <Router>
       <Routes>
-        {/* ✅ Admin Dashboard Route */}
-        <Route path="/" element={<AdminDashboard />} />
-
-        {/* ✅ Catch-all for undefined routes */}
-        <Route path="*" element={<h1>404 - Page Not Found</h1>} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/admin" element={<PrivateRoute element={<AdminDashboard />} />} />
+        <Route path="*" element={<Navigate to="/admin" />} />
       </Routes>
     </Router>
   );

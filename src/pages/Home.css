@@ -5,7 +5,7 @@
   height: 100vh;
   background: linear-gradient(to right, #0f0c29, #302b63, #24243e); 
   background-size: 200% 200%;
-  animation: gradientAnimation 4s ease infinite;/* Deep gradient for luxury feel */
+  animation: gradientAnimation 4s ease infinite; /* Deep gradient for luxury feel */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -13,6 +13,7 @@
   padding: 20px;
   overflow: hidden;
 }
+
 @keyframes gradientAnimation {
   0% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
@@ -30,10 +31,9 @@
 }
 
 /* Highlighted Logo */
-/* Highlighted Logo */
 .logo {
   position: absolute;
-  top: 65px; /* Increased from 30px to move it down */
+  top: 90px; /* Adjusted to place the logo at the top */
   left: 50%;
   transform: translateX(-50%);
   width: 200px; /* Adjusted for better visibility */
@@ -42,12 +42,12 @@
   filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.8)); /* Gold glow effect */
 }
 
-
 /* Hero Content */
 .hero-content {
   z-index: 10;
   color: #fff;
   max-width: 700px;
+  margin-top: 120px; /* Added margin to prevent overlap with the logo */
 }
 
 /* Welcome Text */
@@ -126,7 +126,6 @@ h1 {
 }
 
 /* Call-to-Action Buttons */
-/* CTA Buttons */
 .cta-button {
   background: linear-gradient(to right, #ffcc00, #ff8800);
   color: #333;
@@ -184,5 +183,14 @@ h1 {
   .service-box {
     width: 80%;
     margin: 0 auto;
+  }
+
+  .logo {
+    top: 10px; /* Adjusted for smaller screens */
+    width: 80px; /* Smaller logo for mobile */
+  }
+
+  .hero-content {
+    margin-top: 100px; /* Adjusted for smaller screens */
   }
 }

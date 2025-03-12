@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import './Home.css'; 
 import logo from '../assets/logo-removebg-preview.png'; 
 
-
 const Home = () => {
   const navigate = useNavigate();
 

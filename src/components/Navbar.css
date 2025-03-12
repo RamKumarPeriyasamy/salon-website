@@ -83,6 +83,90 @@
   color: #ff9800;
 }
 
+/* Appointment Button - Luxury Design */
+.nav-button.appointment {
+  background: linear-gradient(135deg, #ff9800, #ff5722); /* Gradient background */
+  color: #fff;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 12px 25px;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.5s ease-in-out;
+  box-shadow: 0 4px 15px rgba(255, 152, 0, 0.4);
+}
+
+/* Hover Effect for Appointment Button */
+.nav-button.appointment:hover {
+  background: linear-gradient(135deg, #ff5722, #ff9800); /* Reverse gradient on hover */
+  box-shadow: 0 6px 20px rgba(255, 152, 0, 0.6);
+  transform: scale(1.05);
+}
+
+/* Ripple Effect for Appointment Button */
+.nav-button.appointment::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 300%;
+  height: 300%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0));
+  transform: translate(-50%, -50%) scale(0);
+  transition: transform 0.5s ease-in-out;
+  border-radius: 50%;
+}
+
+.nav-button.appointment:active::after {
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 0;
+}
+
+/* Admin Button - Luxury Design */
+.nav-button.admin {
+  background: linear-gradient(135deg, #4caf50, #8bc34a); /* Gradient background */
+  color: #fff;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 12px 25px;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.5s ease-in-out;
+  box-shadow: 0 4px 15px rgba(76, 175, 80, 0.4);
+}
+
+/* Hover Effect for Admin Button */
+.nav-button.admin:hover {
+  background: linear-gradient(135deg, #8bc34a, #4caf50); /* Reverse gradient on hover */
+  box-shadow: 0 6px 20px rgba(76, 175, 80, 0.6);
+  transform: scale(1.05);
+}
+
+/* Ripple Effect for Admin Button */
+.nav-button.admin::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 300%;
+  height: 300%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0));
+  transform: translate(-50%, -50%) scale(0);
+  transition: transform 0.5s ease-in-out;
+  border-radius: 50%;
+}
+
+.nav-button.admin:active::after {
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 0;
+}
+
 /* Responsive Navbar */
 @media (max-width: 768px) {
   .navbar {
@@ -97,6 +181,13 @@
   .nav-links {
     flex-direction: row;
     gap: 15px;
+    font-size: 16px;
+  }
+
+  /* Adjust button size for smaller screens */
+  .nav-button.appointment,
+  .nav-button.admin {
+    padding: 10px 20px;
     font-size: 16px;
   }
 }

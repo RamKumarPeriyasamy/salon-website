@@ -1,0 +1,97 @@
+version: '3.8'
+
+services:
+  mongo:
+    image: mongo:latest
+    container_name: mongo
+    restart: always
+    ports:
+      - "27020:27017"
+    volumes:
+      - mongodb_data:/data/db
+    networks:
+      - salon-network
+
+  admin-backend:
+    build:
+      context: ./admin-portal/backend
+      dockerfile: Dockerfile
+    ports:
+      - "5000:5000"
+    environment:
+      - NODE_ENV=development
+      - PORT=5000
+      - MONGO_URI=mongodb://mongo:27017/salonDB
+    networks:
+      - salon-network
+    container_name: admin-backend
+    restart: unless-stopped
+    depends_on:
+      - mongo
+    volumes:
+      - ./admin-portal/backend:/app
+      - /app/node_modules
+
+  admin-frontend:
+    build:
+      context: ./admin-portal/frontend
+      dockerfile: Dockerfile
+    ports:
+      - "8002:8002"
+    depends_on:
+      - admin-backend
+    environment:
+      - VITE_API_URL=http://localhost:5000
+    networks:
+      - salon-network
+    container_name: admin-frontend
+    restart: unless-stopped
+    volumes:
+      - ./admin-portal/frontend:/app
+      - /app/node_modules
+    command: sh -c "npm run dev -- --host 0.0.0.0 --port 8002"
+
+  appointment-booking:
+    build:
+      context: ./appointment-booking
+      dockerfile: Dockerfile
+    ports:
+      - "8001:8001"
+    depends_on:
+      - admin-backend
+    environment:
+      - VITE_API_URL=http://localhost:5000
+    networks:
+      - salon-network
+    container_name: appointment-booking
+    restart: unless-stopped
+    volumes:
+      - ./appointment-booking:/app
+      - /app/node_modules
+    command: sh -c "npm run dev -- --host 0.0.0.0 --port 8001"
+
+  salon-website:
+    build:
+      context: ./salon-website
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    depends_on:
+      - admin-backend
+    environment:
+      - VITE_API_URL=http://localhost:5000
+    networks:
+      - salon-network
+    container_name: salon-website
+    restart: unless-stopped
+    volumes:
+      - ./salon-website:/app
+      - /app/node_modules
+    command: sh -c "npm run dev -- --host 0.0.0.0 --port 8000"
+
+networks:
+  salon-network:
+    driver: bridge
+
+volumes:
+  mongodb_data:

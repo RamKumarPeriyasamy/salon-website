@@ -1,8 +1,22 @@
+/* Service.css */
+/* Base styles and imports */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+}
+
 /* Full-Screen Styling */
 .services-container {
-  background: linear-gradient(135deg, #1e3c72, #2a5298); /* Dark blue gradient */
-  background-size: 200% 200%;
-  animation: gradientAnimation 4s ease infinite;
+  background: linear-gradient(135deg, #1e3c72, #2a5298, #1e3c72);
+  background-size: 300% 300%;
+  animation: gradientAnimation 15s ease infinite;
   color: #fff;
   text-align: center;
   min-height: 100vh;
@@ -12,102 +26,414 @@
   justify-content: flex-start;
   padding: 60px 20px;
   position: relative;
+  overflow-x: hidden;
 }
 
+/* Background animation */
 @keyframes gradientAnimation {
   0% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
 }
 
-
+/* Pattern overlay */
+.services-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  pointer-events: none;
+}
 
 /* Service Header */
 .services-header {
   margin-top: 30px;
+  margin-bottom: 40px;
+  position: relative;
+  padding-bottom: 20px;
+  max-width: 700px;
+}
+
+.services-header::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120px;
+  height: 3px;
+  background: linear-gradient(to right, transparent, #ffeb3b, transparent);
 }
 
 .services-header h2 {
-  font-size: 2rem;
+  font-family: 'Playfair Display', serif;
+  font-size: 2.5rem;
   font-weight: bold;
-  text-transform: uppercase;
-  margin-bottom: 6px;
+  margin-bottom: 15px;
+  background: linear-gradient(to right, #ffffff, #ffeb3b, #ffffff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-size: 200% auto;
+  animation: textShine 3s linear infinite;
+}
+
+@keyframes textShine {
+  to {
+    background-position: 200% center;
+  }
 }
 
 .services-header p {
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   opacity: 0.9;
   font-style: italic;
+  font-family: 'Playfair Display', serif;
 }
 
-/* Service Cards - Smaller Grid Layout */
+/* Service Cards - Grid Layout */
 .services-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); /* Smaller size */
-  gap: 15px;
-  margin-top: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
+  margin: 20px 0;
   width: 95%;
-  max-width: 900px;
+  max-width: 1200px;
 }
 
-/* Service Card - Smaller & Elegant */
+/* Service Card */
 .service-card {
   background: rgba(255, 255, 255, 0.1);
   color: #fff;
-  padding: 15px;
-  border-radius: 12px;
-  box-shadow: 0 5px 12px rgba(0, 0, 0, 0.2);
-  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  padding: 25px 20px;
+  border-radius: 16px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   cursor: pointer;
   backdrop-filter: blur(10px);
   text-align: center;
-  height: 180px; /* Smaller height */
+  min-height: 200px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.service-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  transform: translateX(-100%);
+  transition: transform 0.6s ease;
+  z-index: 1;
+}
+
+.service-card:hover::before {
+  transform: translateX(100%);
 }
 
 /* Card Title */
 .service-card h3 {
-  font-size: 1.3rem;
-  margin-bottom: 6px;
+  font-size: 1.4rem;
+  margin-bottom: 15px;
   color: #ffeb3b;
-  font-weight: bold;
+  font-weight: 600;
+  position: relative;
+  z-index: 2;
 }
 
 /* Card Description */
 .service-card p {
-  font-size: 0.9rem;
-  opacity: 0.8;
-  max-width: 90%;
-  margin: 0 auto;
+  font-size: 1rem;
+  opacity: 0.9;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  position: relative;
+  z-index: 2;
 }
 
-/* Hover Effect - Subtle Lift */
+/* Service Button */
+.service-button {
+  background: linear-gradient(45deg, #ffeb3b, #ffc107);
+  color: #333;
+  border: none;
+  padding: 10px 25px;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  position: relative;
+  z-index: 2;
+  overflow: hidden;
+}
+
+.service-button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  transition: all 0.4s ease;
+  z-index: -1;
+}
+
+.service-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.service-button:hover::before {
+  left: 100%;
+}
+
+.service-button:active {
+  transform: translateY(0);
+}
+
+/* Hover Effect - Elegant Lift */
 .service-card:hover {
-  transform: scale(1.05);
-  box-shadow: 0 8px 20px rgba(255, 255, 255, 0.2);
-  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.3);
 }
 
 /* Special Offer Section */
 .special-offer {
-  margin-top: 30px;
-  background: rgba(255, 255, 255, 0.15);
-  padding: 12px 18px;
-  border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  margin: 40px 0;
+  background: linear-gradient(135deg, rgba(255, 235, 59, 0.15), rgba(255, 193, 7, 0.15));
+  padding: 25px 35px;
+  border-radius: 16px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
   text-align: center;
+  max-width: 700px;
+  width: 95%;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(255, 235, 59, 0.3);
+}
+
+.special-offer::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255, 235, 59, 0.1) 0%, transparent 70%);
+  animation: pulseGlow 3s ease-in-out infinite;
+}
+
+@keyframes pulseGlow {
+  0% { transform: scale(0.8); opacity: 0.3; }
+  50% { transform: scale(1); opacity: 0.6; }
+  100% { transform: scale(0.8); opacity: 0.3; }
 }
 
 .special-offer h3 {
-  font-size: 1.4rem;
+  font-size: 1.6rem;
   color: #ffeb3b;
   font-weight: bold;
+  margin-bottom: 10px;
+  position: relative;
 }
 
 .special-offer p {
-  font-size: 1rem;
-  font-weight: bold;
+  font-size: 1.1rem;
+  font-weight: 500;
+  line-height: 1.6;
+  position: relative;
+}
+
+.special-offer strong {
+  color: #ffeb3b;
+  font-weight: 700;
+}
+
+/* Responsive Design - Desktop (default above) */
+
+/* Responsive Design - Tablet */
+@media (max-width: 1024px) {
+  .services-container {
+    padding: 50px 15px;
+  }
+
+  .services-header {
+    margin-top: 20px;
+    margin-bottom: 30px;
+  }
+
+  .services-header h2 {
+    font-size: 2.2rem;
+  }
+
+  .services-header p {
+    font-size: 1.1rem;
+  }
+
+  .services-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+  .service-card {
+    padding: 20px 15px;
+    min-height: 180px;
+  }
+
+  .service-card h3 {
+    font-size: 1.3rem;
+  }
+
+  .service-card p {
+    font-size: 0.95rem;
+  }
+
+  .special-offer {
+    padding: 20px 25px;
+  }
+
+  .special-offer h3 {
+    font-size: 1.4rem;
+  }
+
+  .special-offer p {
+    font-size: 1rem;
+  }
+}
+
+/* Responsive Design - Mobile */
+@media (max-width: 768px) {
+  .services-container {
+    padding: 40px 15px;
+  }
+
+  .services-header {
+    margin-top: 30px;
+    margin-bottom: 25px;
+  }
+
+  .services-header h2 {
+    font-size: 1.8rem;
+  }
+
+  .services-header p {
+    font-size: 1rem;
+  }
+
+  .services-grid {
+    grid-template-columns: 1fr;
+    gap: 15px;
+    width: 100%;
+    max-width: 350px; /* Control max width for mobile */
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .service-card {
+    padding: 20px 15px;
+    min-height: 170px;
+    margin: 0 auto; /* Center cards */
+    width: 100%; /* Full width of container */
+  }
+
+  .service-card h3 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+  }
+
+  .service-card p {
+    font-size: 0.9rem;
+    margin-bottom: 15px;
+  }
+
+  .service-button {
+    padding: 8px 20px;
+    font-size: 0.9rem;
+  }
+
+  .special-offer {
+    padding: 15px 20px;
+    margin: 30px 0;
+  }
+
+  .special-offer h3 {
+    font-size: 1.3rem;
+  }
+
+  .special-offer p {
+    font-size: 0.95rem;
+  }
+}
+
+/* Responsive Design - Small Mobile */
+@media (max-width: 480px) {
+  .services-container {
+    padding: 30px 10px;
+  }
+
+  .services-header {
+    margin-top: 30px;
+    margin-bottom: 20px;
+  }
+
+  .services-header h2 {
+    font-size: 1.6rem;
+  }
+
+  .services-header p {
+    font-size: 0.9rem;
+  }
+  
+  .services-grid {
+    max-width: 300px; /* Narrower max width for smaller screens */
+  }
+
+  .service-card {
+    padding: 15px 12px;
+    min-height: 160px;
+    width: 100%; /* Ensure full width containment */
+  }
+
+  .service-card h3 {
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+  }
+
+  .service-card p {
+    font-size: 0.85rem;
+    line-height: 1.4;
+    margin-bottom: 12px;
+  }
+
+  .service-button {
+    padding: 7px 18px;
+    font-size: 0.85rem;
+  }
+
+  .special-offer {
+    padding: 12px 15px;
+    max-width: 300px; /* Match the width of service cards */
+  }
+
+  .special-offer h3 {
+    font-size: 1.2rem;
+  }
+
+  .special-offer p {
+    font-size: 0.9rem;
+  }
 }

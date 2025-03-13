@@ -1,7 +1,7 @@
 .back-button-container {
   position: fixed;  /* Keeps it in place */
-  bottom: 20px;     /* Moves it to the bottom */
-  left: 20px;       /* Moves it slightly from the left */
+  top: 20px;        /* Moves it to the top */
+  left: 20px;       /* Keeps it slightly from the left */
   z-index: 1000;    /* Ensures it's above other elements */
 }
 

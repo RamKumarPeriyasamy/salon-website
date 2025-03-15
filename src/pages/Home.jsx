@@ -8,11 +8,17 @@ const Home = () => {
       <img src={logo} alt="Salon Logo" className="logo" />
       <h1 className="title">Welcome to Sundaram Salon</h1>
       <h2 className="subtitle">
-      "Life is more beautiful when you meet the right stylist."
+        "Life is more beautiful when you meet the right stylist."
       </h2>
-      <Link to="/booking" className="glassy-button">
-        Book an Appointment
-      </Link>
+      <div className="button-group">
+        <Link to="/booking" className="glassy-button">
+          Book an Appointment
+        </Link>
+        {/* New Home Button */}
+        <a href="/" className="home-button">
+          Home
+        </a>
+      </div>
     </div>
   );
 };

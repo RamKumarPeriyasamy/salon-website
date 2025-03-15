@@ -2,8 +2,9 @@ import axios from "axios";
 import { useState } from "react";
 import "./Booking.css"; 
 import logo from "../assets/logo4.png"; 
+import BackButton from "../components/BackButton"; 
 
-const API_URL = import.meta.env.VITE_BACKEND_API; // ✅ Use environment variable for API URL
+const API_URL = import.meta.env.VITE_BACKEND_API;
 
 function Booking() {
   const [name, setName] = useState("");
@@ -14,22 +15,18 @@ function Booking() {
   const [location, setLocation] = useState("");
   const [stylist, setStylist] = useState("");
   const [error, setError] = useState("");
-  const [loading, setLoading] = useState(false); // ✅ Add loading state
+  const [loading, setLoading] = useState(false);
 
   // ✅ Validate 10-digit phone number
   const validatePhoneNumber = (num) => /^[0-9]{10}$/.test(num);
 
-  // ✅ Convert 12-hour format (AM/PM) to 24-hour format for validation
+  // ✅ Convert 12-hour format (AM/PM) to 24-hour format
   const convertTo24HourFormat = (time12h) => {
     const [timePart, modifier] = time12h.split(" ");
     let [hours, minutes] = timePart.split(":").map(Number);
 
-    if (modifier === "PM" && hours !== 12) {
-      hours += 12;
-    }
-    if (modifier === "AM" && hours === 12) {
-      hours = 0;
-    }
+    if (modifier === "PM" && hours !== 12) hours += 12;
+    if (modifier === "AM" && hours === 12) hours = 0;
 
     return `${String(hours).padStart(2, "0")}:${String(minutes).padStart(2, "0")}`;
   };
@@ -39,7 +36,8 @@ function Booking() {
     const convertedTime = convertTo24HourFormat(selectedTime);
     const [hours, minutes] = convertedTime.split(":").map(Number);
 
-    return (hours > 7 || (hours === 7 && minutes >= 0)) && (hours < 20 || (hours === 20 && minutes === 0));
+    return (hours > 7 || (hours === 7 && minutes >= 0)) && 
+           (hours < 20 || (hours === 20 && minutes === 0));
   };
 
   const handleSubmit = async (e) => {
@@ -55,8 +53,8 @@ function Booking() {
       return;
     }
 
-    setError(""); // Clear errors when validation passes
-    setLoading(true); // ✅ Show loading state
+    setError("");
+    setLoading(true);
 
     const appointmentData = {
       name,
@@ -68,12 +66,14 @@ function Booking() {
     };
 
     try {
-      const token = localStorage.getItem("token"); // ✅ Get token from local storage
-      const headers = token ? { Authorization: `Bearer ${token}` } : {}; // ✅ Send token if available
+      const token = localStorage.getItem("token");
+      const headers = token ? { Authorization: `Bearer ${token}` } : {};
 
       const response = await axios.post(`${API_URL}/appointments`, appointmentData, { headers });
 
       alert(response.data.message);
+
+      // ✅ Reset form on success
       setName("");
       setPhone("");
       setCountryCode("+91");
@@ -85,21 +85,31 @@ function Booking() {
       console.error("❌ Booking Error:", error.response?.data || error.message);
       alert("❌ Error Booking Appointment");
     } finally {
-      setLoading(false); // ✅ Hide loading state
+      setLoading(false);
     }
   };
 
   return (
     <div className="booking-container">
+      <BackButton /> {/* ✅ Back button at the top left */}
       <div className="booking-card">
         <div className="booking-logo">
           <img src={logo} alt="Salon Logo" />
         </div>
         <h1 className="booking-title">📅 Book Your Appointment</h1>
+
         {error && <p className="error-message">{error}</p>} 
 
         <form onSubmit={handleSubmit} className="booking-form">
-          <input type="text" placeholder="Your Name" value={name} onChange={(e) => setName(e.target.value)} className="booking-input" required />
+          {/* Name Input */}
+          <input
+            type="text"
+            placeholder="Your Name"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            className="booking-input"
+            required
+          />
 
           {/* Phone Number Input */}
           <div className="phone-input">
@@ -110,24 +120,50 @@ function Booking() {
               <option value="+61">+61 (Australia)</option>
               <option value="+81">+81 (Japan)</option>
             </select>
-            <input type="tel" placeholder="Enter phone number" value={phone} onChange={(e) => setPhone(e.target.value)} required />
+            <input
+              type="tel"
+              placeholder="Enter phone number"
+              value={phone}
+              onChange={(e) => setPhone(e.target.value)}
+              required
+            />
           </div>
 
           {/* Date Picker */}
-          <input type="date" value={date} onChange={(e) => setDate(e.target.value)} className="booking-input" required />
+          <input
+            type="date"
+            value={date}
+            onChange={(e) => setDate(e.target.value)}
+            className="booking-input"
+            required
+          />
 
-          {/* Time Picker (12-Hour Format with AM/PM) */}
-          <select value={time} onChange={(e) => setTime(e.target.value)} className="booking-input" required>
+          {/* Time Picker */}
+          <select
+            value={time}
+            onChange={(e) => setTime(e.target.value)}
+            className="booking-input"
+            required
+          >
             <option value="">Select Time</option>
-            {["07:00 AM", "07:30 AM", "08:00 AM", "08:30 AM", "09:00 AM", "09:30 AM", "10:00 AM", "10:30 AM", "11:00 AM", "11:30 AM", "12:00 PM",
-              "12:30 PM", "01:00 PM", "01:30 PM", "02:00 PM", "02:30 PM", "03:00 PM", "03:30 PM", "04:00 PM", "04:30 PM", "05:00 PM", "05:30 PM",
-              "06:00 PM", "06:30 PM", "07:00 PM", "07:30 PM", "08:00 PM"].map((t) => (
+            {[
+              "07:00 AM", "07:30 AM", "08:00 AM", "08:30 AM", "09:00 AM", "09:30 AM",
+              "10:00 AM", "10:30 AM", "11:00 AM", "11:30 AM", "12:00 PM", "12:30 PM",
+              "01:00 PM", "01:30 PM", "02:00 PM", "02:30 PM", "03:00 PM", "03:30 PM",
+              "04:00 PM", "04:30 PM", "05:00 PM", "05:30 PM", "06:00 PM", "06:30 PM",
+              "07:00 PM", "07:30 PM", "08:00 PM"
+            ].map((t) => (
               <option key={t} value={t}>{t}</option>
             ))}
           </select>
 
           {/* Location Selection */}
-          <select value={location} onChange={(e) => setLocation(e.target.value)} className="booking-input" required>
+          <select
+            value={location}
+            onChange={(e) => setLocation(e.target.value)}
+            className="booking-input"
+            required
+          >
             <option value="">Select District</option>
             {["Chennai", "Thoothukudi", "Salem", "Madurai", "Coimbatore"].map((city) => (
               <option key={city} value={city}>{city}</option>
@@ -135,7 +171,12 @@ function Booking() {
           </select>
 
           {/* Stylist Selection */}
-          <select value={stylist} onChange={(e) => setStylist(e.target.value)} className="booking-input" required>
+          <select
+            value={stylist}
+            onChange={(e) => setStylist(e.target.value)}
+            className="booking-input"
+            required
+          >
             <option value="">Select Stylist</option>
             {["Periyasamy A", "Teja Mani P", "Ram Kumar P"].map((stylist) => (
               <option key={stylist} value={stylist}>{stylist}</option>

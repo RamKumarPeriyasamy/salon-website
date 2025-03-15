@@ -150,3 +150,58 @@ body {
         padding: 20px;
     }
 }
+/* Tablet Devices (768px - 1024px) */
+@media (max-width: 1024px) {
+    .booking-card {
+      width: 90%; /* Slightly smaller card for tablets */
+      padding: 25px;
+    }
+  
+    .booking-title {
+      font-size: 22px; /* Slightly smaller title */
+    }
+  
+    .booking-input, .booking-button {
+      padding: 10px; /* Smaller padding for inputs and buttons */
+      font-size: 14px; /* Smaller font size */
+    }
+  
+    .phone-input select, .phone-input input {
+      font-size: 14px; /* Smaller font size for phone input */
+    }
+  
+    .booking-logo img {
+      width: 80px; /* Smaller logo */
+    }
+  }
+  
+  /* Mobile Devices (up to 767px) */
+  @media (max-width: 767px) {
+    .booking-card {
+      width: 80%; /* Full width for mobile */
+      padding: 20px;
+      margin-left: 40px;
+      margin-top: 30px;
+    }
+  
+    .booking-title {
+      font-size: 20px; /* Smaller title for mobile */
+    }
+  
+    .booking-input, .booking-button {
+      padding: 8px; /* Smaller padding for inputs and buttons */
+      font-size: 12px; /* Smaller font size */
+    }
+  
+    .phone-input select, .phone-input input {
+      font-size: 12px; /* Smaller font size for phone input */
+    }
+  
+    .booking-logo img {
+      width: 60px; /* Smaller logo */
+    }
+  
+    .error-message {
+      font-size: 12px; /* Smaller error message */
+    }
+  }

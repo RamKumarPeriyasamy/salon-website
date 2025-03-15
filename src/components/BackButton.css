@@ -1,0 +1,17 @@
+.back-button-container {
+  position: fixed;  /* Keeps it in place */
+  top: 20px;        /* Moves it to the top */
+  left: 20px;       /* Keeps it slightly from the left */
+  z-index: 1000;    /* Ensures it's above other elements */
+}
+
+.back-arrow {
+  font-size: 28px; 
+  cursor: pointer;
+  color: rgb(251, 251, 251); /* Default arrow color */
+  transition: color 0.3s ease; /* Smooth color change */
+}
+
+.back-arrow:hover {
+  color: rgb(117, 111, 111); /* Change color when hovering */
+}

@@ -17,10 +17,10 @@ services:
       context: ./admin-portal/backend
       dockerfile: Dockerfile
     ports:
-      - "5000:5000"
+      - "9004:9004"
     environment:
       - NODE_ENV=development
-      - PORT=5000
+      - PORT=9004
       - MONGO_URI=mongodb://mongo:27017/salonDB
     networks:
       - salon-network
@@ -41,7 +41,7 @@ services:
     depends_on:
       - admin-backend
     environment:
-      - VITE_API_URL=http://localhost:5000
+      - VITE_API_URL=http://localhost:9004
     networks:
       - salon-network
     container_name: admin-frontend
@@ -60,7 +60,7 @@ services:
     depends_on:
       - admin-backend
     environment:
-      - VITE_API_URL=http://localhost:5000
+      - VITE_API_URL=http://localhost:9004
     networks:
       - salon-network
     container_name: appointment-booking
@@ -79,7 +79,7 @@ services:
     depends_on:
       - admin-backend
     environment:
-      - VITE_API_URL=http://localhost:5000
+      - VITE_API_URL=http://localhost:9004
     networks:
       - salon-network
     container_name: salon-website

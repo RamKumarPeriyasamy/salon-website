@@ -5,26 +5,61 @@
   100% { background-position: 0% 50%; }
 }
 
+html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
 body {
   background: linear-gradient(-45deg, #0f1a20, #1c293a, #1e3242, #102030);
-  background-size: 400% 400%;
+  background-size: 200% 200%;
+  background-attachment: fixed; /* Important for full coverage */
   animation: luxuryWaveAnimation 20s infinite ease-in-out;
   font-family: "Playfair Display", "Poppins", serif;
   color: #f0f0f0;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
+  min-height: 100vh;
+  position: relative; /* Needed for proper sizing */
 }
 
+/* Base Container */
 .admin-container {
   width: 100%;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
   padding: 20px;
+  box-sizing: border-box;
   background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23d4af37' fill-opacity='0.05'%3E%3Cpath d='M36 34h4v1h-4zm4-1h4v1h-4zm-4-1h4v1h-4zm8-6h4v1h-4z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+
+/* Back Arrow */
+.back-arrow {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  width: 45px;
+  height: 45px;
+  background: rgba(10, 17, 25, 0.8);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 22px;
+  cursor: pointer;
+  color: #d4af37;
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  transition: all 0.3s ease;
+  z-index: 1000;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.back-arrow:hover {
+  background: rgba(212, 175, 55, 0.2);
+  transform: scale(1.1);
 }
 
 /* Luxury Header Styling */
@@ -34,11 +69,13 @@ body {
   padding: 25px 35px;
   background: rgba(10, 17, 25, 0.85);
   backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
   border-radius: 16px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), 0 2px 8px rgba(212, 175, 55, 0.1);
+  margin-top: 30px;
   margin-bottom: 30px;
   border: 1px solid rgba(212, 175, 55, 0.2);
   position: relative;
@@ -67,13 +104,6 @@ body {
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
   display: flex;
   align-items: center;
-}
-
-.admin-header h1::before {
-  content: "✦";
-  margin-right: 15px;
-  font-size: 24px;
-  color: #d4af37;
 }
 
 .logout-button {
@@ -127,36 +157,8 @@ body {
   width: 95%;
   max-width: 1400px;
   backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-}
-
-/* Table Wrapper */
-.table-wrapper {
-  width: 95%;
-  max-width: 1400px;
-  height: 70vh;
-  background: rgba(10, 17, 25, 0.85);
-  backdrop-filter: blur(12px);
-  border-radius: 16px;
-  padding: 30px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3), 0 2px 8px rgba(212, 175, 55, 0.1);
-  overflow: auto;
-  margin: 0 auto;
-  border: 1px solid rgba(212, 175, 55, 0.2);
-  position: relative;
-}
-
-.table-wrapper::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 15%;
-  right: 15%;
-  height: 1px;
-  background: linear-gradient(90deg, 
-    rgba(212, 175, 55, 0) 0%, 
-    rgba(212, 175, 55, 0.5) 50%, 
-    rgba(212, 175, 55, 0) 100%);
 }
 
 /* Animated Loading Text */
@@ -190,11 +192,43 @@ body {
   100% { width: 0; left: 100%; }
 }
 
+/* Table Wrapper - FIXED for better mobile scrolling */
+.table-wrapper {
+  width: 95%;
+  max-width: 1400px;
+  background: rgba(10, 17, 25, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 16px;
+  padding: 30px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3), 0 2px 8px rgba(212, 175, 55, 0.1);
+  overflow-x: auto; /* Changed from just 'auto' to explicitly handle horizontal overflow */
+  margin: 0 auto;
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  position: relative;
+  max-height: 70vh;
+  -webkit-overflow-scrolling: touch; /* For smooth scrolling on iOS */
+}
+
+.table-wrapper::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 15%;
+  right: 15%;
+  height: 1px;
+  background: linear-gradient(90deg, 
+    rgba(212, 175, 55, 0) 0%, 
+    rgba(212, 175, 55, 0.5) 50%, 
+    rgba(212, 175, 55, 0) 100%);
+}
+
 /* Table Styling */
 .appointments-table {
   width: 100%;
   border-collapse: separate;
   border-spacing: 0;
+  min-width: 600px; /* Ensures table doesn't shrink too much on mobile */
 }
 
 /* Fixed Table Header */
@@ -272,6 +306,60 @@ body {
   background: linear-gradient(135deg, #e5c158, #d4af37);
 }
 
+/* Client Info with Avatar */
+.client-info {
+  display: flex;
+  align-items: center;
+}
+
+.client-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #2c3e50, #1a2530);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 12px;
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  color: #d4af37;
+  font-weight: bold;
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+.client-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.client-name {
+  font-weight: bold;
+  color: #f0f0f0;
+  margin-bottom: 3px;
+}
+
+.client-phone {
+  color: #a0a0a0;
+  font-size: 14px;
+}
+
+/* Status badges */
+.status-badge {
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 500;
+  text-align: center;
+  display: inline-block;
+}
+
+.stylist-badge {
+  background: rgba(20, 30, 40, 0.6);
+  color: #d4af37;
+  border: 1px solid rgba(212, 175, 55, 0.3);
+}
+
 /* Action Buttons */
 .action-buttons {
   display: flex;
@@ -307,81 +395,266 @@ body {
   color: #e57373;
 }
 
-/* Client Info with Avatar */
-.client-info {
-  display: flex;
-  align-items: center;
-}
+/* Import Font Awesome for icons - make sure this is included */
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');
 
-.client-avatar {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, #2c3e50, #1a2530);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-right: 12px;
-  border: 1px solid rgba(212, 175, 55, 0.3);
-  color: #d4af37;
-  font-weight: bold;
-  font-size: 18px;
-}
+/* IMPROVED MEDIA QUERIES */
 
-.client-details {
-  display: flex;
-  flex-direction: column;
-}
-
-.client-name {
-  font-weight: bold;
-  color: #f0f0f0;
-  margin-bottom: 3px;
-}
-
-.client-phone {
-  color: #a0a0a0;
-  font-size: 14px;
-}
-
-/* Status badges */
-.status-badge {
-  padding: 6px 12px;
-  border-radius: 20px;
-  font-size: 14px;
-  font-weight: 500;
-  text-align: center;
-  display: inline-block;
-}
-
-.stylist-badge {
-  background: rgba(20, 30, 40, 0.6);
-  color: #d4af37;
-  border: 1px solid rgba(212, 175, 55, 0.3);
-}
-
-/* Media Queries */
-@media (max-width: 768px) {
+/* Large Tablets */
+@media (max-width: 1024px) {
   .admin-header {
-    flex-direction: column;
-    text-align: center;
-    padding: 20px;
+    padding: 20px 25px;
+    border-top: 20px;
   }
 
   .admin-header h1 {
-    margin-bottom: 15px;
-    justify-content: center;
+    font-size: 28px;
   }
 
+  .admin-header h1::before {
+    font-size: 20px;
+  }
+
+  .table-wrapper {
+    padding: 20px;
+  }
+
+  
   .appointments-table th,
   .appointments-table td {
-    padding: 15px 10px;
+    padding: 18px 15px;
+    font-size: 15px;
+  }
+}
+
+/* Tablets */
+@media (max-width: 768px) {
+  .admin-container {
+    padding: 15px;
+  }
+
+  .back-arrow {
+    top: 15px;
+    left: 15px;
+    width: 40px;
+    height: 40px;
+    font-size: 18px;
+  }
+  
+  .admin-header {
+    flex-direction: column;
+    gap: 15px;
+    padding: 20px;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    width: 90%;
+  }
+  
+  .admin-header h1 {
+    font-size: 24px;
+    text-align: center;
+    justify-content: center;
+  }
+  
+  .logout-button {
+    width: 60%;
+    padding: 12px 20px;
     font-size: 14px;
   }
   
   .table-wrapper {
+    width: 90%;
     padding: 15px;
-    height: auto;
-    max-height: 70vh;
+    max-height: 65vh;
+  }
+  
+  /* Important - this ensures the table is fully scrollable horizontally on mobile */
+  .table-wrapper {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  .appointments-table {
+    width: 600px; /* Fixed minimum width */
+  }
+  
+  .appointments-table th,
+  .appointments-table td {
+    padding: 15px 12px;
+    font-size: 14px;
+  }
+  
+  .client-avatar {
+    width: 35px;
+    height: 35px;
+    font-size: 16px;
+  }
+  
+  /* Add indicators for horizontal scrolling */
+  .table-wrapper::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    width: 8px;
+    height: 30px;
+    background: rgba(212, 175, 55, 0.3);
+    border-radius: 4px;
+    transform: translateY(-50%);
+    opacity: 0.7;
+    animation: scrollIndicator 2s infinite;
+    pointer-events: none;
+  }
+  
+  @keyframes scrollIndicator {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 0.7; }
+  }
+}
+
+/* Additional mobile fixes */
+@media (max-width: 480px) {
+  /* Make the table wrapper take full width */
+  .table-wrapper {
+    width: 60%;
+    padding: 10px 5px;
+    margin: 0;
+    border-radius: 0;
+  }
+  
+  /* Adjust table column widths for mobile */
+  .appointments-table {
+    table-layout: fixed; /* Important for controlling column widths */
+  }
+  
+  /* Make client column narrower but ensure text is visible */
+  .appointments-table td:first-child {
+    width: 25%;
+    white-space: normal; /* Allow text wrapping */
+    font-size: 12px;
+  }
+  
+  /* Make date/time columns more compact */
+  .appointments-table td:nth-child(2),
+  .appointments-table td:nth-child(3) {
+    width: 20%;
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+  
+  /* Make location column more compact */
+  .appointments-table td:nth-child(4) {
+    width: 15%;
+  }
+  
+  /* Make stylist column more compact */
+  .appointments-table td:nth-child(5) {
+    width: 20%;
+  }
+  
+  /* Scale down text for all cells */
+  .appointments-table th,
+  .appointments-table td {
+    padding: 10px 5px;
+    font-size: 12px;
+  }
+  
+  /* Ensure header text is visible */
+  .admin-header {
+    width: 50%;
+    border-radius: 0;
+    padding: 15px 10px;
+    border-top: 30px;
+  }
+}
+
+/* Extra small devices */
+@media (max-width: 320px) {
+  .appointments-table td:first-child {
+    width: 30%;
+    font-size: 11px;
+  }
+  
+  .appointments-table th,
+  .appointments-table td {
+    padding: 8px 4px;
+    font-size: 11px;
+  }
+}
+
+/* Small mobile devices */
+@media (max-width: 360px) {
+  .admin-header h1 {
+    font-size: 18px;
+  }
+  
+  .admin-header h1::before {
+    font-size: 14px;
+    margin-right: 8px;
+  }
+  
+  .logout-button {
+    padding: 10px 16px;
+    font-size: 13px;
+  }
+  
+  .table-wrapper {
+    padding: 8px;
+  }
+  
+  .back-arrow {
+    width: 36px;
+    height: 36px;
+    font-size: 16px;
+  }
+}
+
+/* Print Styles */
+@media print {
+  body {
+    background: none;
+    color: #000;
+    animation: none;
+  }
+  
+  .admin-container {
+    width: 100%;
+    padding: 0;
+  }
+  
+  .back-arrow,
+  .logout-button,
+  .action-buttons {
+    display: none;
+  }
+  
+  .admin-header,
+  .table-wrapper {
+    background: none;
+    box-shadow: none;
+    border: none;
+    padding: 10px 0;
+    width: 100%;
+    max-width: 100%;
+  }
+  
+  .admin-header h1 {
+    color: #000;
+    text-shadow: none;
+  }
+  
+  .appointments-table th,
+  .appointments-table td {
+    border-color: #ccc;
+    color: #000;
+  }
+  
+  .client-name {
+    color: #000;
+  }
+  
+  .client-phone,
+  .status-badge {
+    color: #333;
   }
 }

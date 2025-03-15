@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { getUser, logout } from "../services/authService";
-import "./AdminDashboard.css"; // This will use our luxury CSS
+import "./AdminDashboard.css";
 
 function AdminDashboard() {
   const [appointments, setAppointments] = useState([]);
@@ -34,13 +34,22 @@ function AdminDashboard() {
     navigate("/login");
   };
 
-  // Get the first letter of client's name for avatar
+  // Handle back navigation
+  const handleGoBack = () => {
+    navigate(-1); // Go to the previous page
+  };
+
   const getInitial = (name) => {
     return name ? name.charAt(0).toUpperCase() : "?";
   };
 
   return (
     <div className="admin-container">
+      {/* Back Arrow */}
+      <div className="back-arrow" onClick={handleGoBack}>
+        &#8592;
+      </div>
+
       <header className="admin-header">
         <h1>SUNDARAM SALON MANAGEMENT</h1>
         <button onClick={handleLogout} className="logout-button">

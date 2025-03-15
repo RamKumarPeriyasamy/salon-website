@@ -1,0 +1,30 @@
+.home-button-container {
+    position: fixed;
+    top: 16px;
+    left: 16px;
+    z-index: 9999;
+  }
+  
+  .home-icon {
+    font-size: 30px;
+    cursor: pointer;
+    color: #b87333; /* Copper color */
+    transition: transform 0.3s ease, color 0.5s ease;
+    animation: glow 2s infinite alternate;
+  }
+  
+  @keyframes glow {
+    0% {
+      color: #b87333; /* Copper */
+      text-shadow: 0 0 8px #b87333;
+    }
+    100% {
+      color: #ffd700; /* Gold */
+      text-shadow: 0 0 15px #ffd700;
+    }
+  }
+  
+  .home-icon:hover {
+    transform: scale(1.2);
+  }
+  

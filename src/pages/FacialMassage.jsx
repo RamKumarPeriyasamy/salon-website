@@ -8,24 +8,20 @@ import DeepTissueMassage from "../assets/UntitledLogo.png";
 import AromatherapyMassage from "../assets/vilot2.jpg";
 
 const FacialMassage = () => {
-  
-
   const facialServices = [
-    { name: "Glow Facial", image: GlowFacial },
-    { name: "Hydrating Facial", image: HydratingFacial },
-    { name: "Anti-Aging Facial", image: AntiAgingFacial },
+    { name: "Glow Facial", image: GlowFacial, details: "Achieve radiant skin with our glow facial treatment." },
+    { name: "Hydrating Facial", image: HydratingFacial, details: "Deep hydration for a fresh and youthful look." },
+    { name: "Anti-Aging Facial", image: AntiAgingFacial, details: "Reduce wrinkles and fine lines with this treatment." },
   ];
 
   const massageServices = [
-    { name: "Relaxing Massage", image: RelaxingMassage },
-    { name: "Deep Tissue Massage", image: DeepTissueMassage },
-    { name: "Aromatherapy Massage", image: AromatherapyMassage },
+    { name: "Relaxing Massage", image: RelaxingMassage, details: "Unwind with a soothing full-body massage." },
+    { name: "Deep Tissue Massage", image: DeepTissueMassage, details: "Relieve muscle tension with deep tissue techniques." },
+    { name: "Aromatherapy Massage", image: AromatherapyMassage, details: "Enhance relaxation with aromatic oils." },
   ];
 
   return (
-      
     <div className="facial-massage-container">
-
       {/* Page Header */}
       <h2 className="page-title">💆‍♀️ Facial & Massage Services</h2>
       <p className="page-description">
@@ -38,8 +34,15 @@ const FacialMassage = () => {
         <div className="service-grid">
           {facialServices.map((service, index) => (
             <div key={index} className="service-card">
-              <img src={service.image} alt={service.name} className="service-image" />
-              <h4>{service.name}</h4>
+              <div className="card-inner">
+                <div className="card-front">
+                  <img src={service.image} alt={service.name} className="service-image" />
+                </div>
+                <div className="card-back">
+                  <h4>{service.name}</h4>
+                  <p>{service.details}</p>
+                </div>
+              </div>
             </div>
           ))}
         </div>
@@ -51,8 +54,15 @@ const FacialMassage = () => {
         <div className="service-grid">
           {massageServices.map((service, index) => (
             <div key={index} className="service-card">
-              <img src={service.image} alt={service.name} className="service-image" />
-              <h4>{service.name}</h4>
+              <div className="card-inner">
+                <div className="card-front">
+                  <img src={service.image} alt={service.name} className="service-image" />
+                </div>
+                <div className="card-back">
+                  <h4>{service.name}</h4>
+                  <p>{service.details}</p>
+                </div>
+              </div>
             </div>
           ))}
         </div>

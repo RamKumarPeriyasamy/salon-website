@@ -26,14 +26,9 @@ const hairstyles = [
 ];
 
 const HairStyle = () => {
-
-
   return (
     <div className="hairstyle-container">
-     
-
       <h1 className="title">💇‍♂️ Hair Styles</h1>
-
       <div className="hairstyle-scroll">
         {hairstyles.map((style, index) => (
           <div key={index} className="hairstyle-card">
@@ -45,7 +40,6 @@ const HairStyle = () => {
           </div>
         ))}
       </div>
-
     </div>
   );
 };

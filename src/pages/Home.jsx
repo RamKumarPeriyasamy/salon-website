@@ -16,7 +16,7 @@ const Home = () => {
       <div className="hero-content">
         <h1>
           <span className="welcome-text">Welcome to</span> 
-          <span className="highlight"> Sundaram Salon</span>
+          <span className="highlight"> SUNDARAM SALON</span>
         </h1>
         <p className="tagline">"Style is a way to say who you are without having to speak."</p>
 
@@ -41,18 +41,7 @@ const Home = () => {
           </div>
         </div>
 
-        {/* Call to Action Buttons */}
-        <div className="cta-buttons">
-          <button className="cta-button" onClick={() => navigate('/Services')}>
-            Explore Services
-          </button>
-          <button className="cta-button" onClick={() => navigate('/contact')}>
-            Contact Us
-          </button>
-          <button className="cta-button" onClick={() => navigate('/about')}>
-            About Us
-          </button>
-        </div>
+        
       </div>
     </div>
   );

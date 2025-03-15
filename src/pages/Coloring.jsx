@@ -22,7 +22,6 @@ const hairDyeColors = [
 const HairDye = () => {
   return (
     <div className="hair-dye-container">
-   
       {/* Page Title */}
       <h1 className="title">Hair Dye Colors</h1>
       <p className="description">

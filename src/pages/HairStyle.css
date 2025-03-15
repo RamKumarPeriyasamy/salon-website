@@ -2,7 +2,7 @@
 .hairstyle-container {
   background-color: #585656; /* Dark Grey */
   min-height: 100vh;
-  padding: 80px;
+  padding: 100px 20px 20px; /* Added top padding to avoid navbar overlap */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -10,11 +10,12 @@
 
 /* Title Styling */
 .title {
-  font-size: 3rem;
+  font-size: 2.5rem;
   color: #ffcc00;
   font-weight: bold;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
   text-transform: uppercase;
+  text-align: center;
 }
 
 /* Scroll Container */
@@ -22,15 +23,15 @@
   display: flex;
   flex-wrap: wrap; /* Allows multiple images in a row */
   justify-content: center;
-  gap: 30px;
-  padding-bottom: 50px;
+  gap: 20px;
+  padding-bottom: 30px;
 }
 
 /* HairStyle Card - Bigger Size */
 .hairstyle-card {
   position: relative;
-  width: 250px;  /* Increased Size */
-  height: 400px; /* Increased Size */
+  width: 250px; /* Fixed width */
+  height: 350px; /* Fixed height */
   overflow: hidden;
   border-radius: 15px;
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
@@ -50,22 +51,20 @@
   border-radius: 15px;
 }
 
-/* Hairstyle Details - Glass Effect Popup BELOW the Image */
+/* Hairstyle Details - Glass Effect Popup INSIDE the Card */
 .hairstyle-details {
   position: absolute;
-  bottom: -100px; /* Initially hidden below */
-  left: 50%;
-  transform: translateX(-50%);
-  width: 90%;
-  background: rgba(255, 255, 255, 0.15); /* Semi-transparent background */
-  backdrop-filter: blur(10px); /* Glass Effect */
+  bottom: 0; /* Positioned at the bottom of the card */
+  left: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.7); /* Semi-transparent dark background */
   color: white;
   padding: 15px;
   text-align: center;
-  border-radius: 10px;
+  border-radius: 0 0 15px 15px; /* Rounded corners only at the bottom */
   opacity: 0;
   visibility: hidden;
-  transition: opacity 0.4s ease-in-out, bottom 0.4s ease-in-out;
+  transition: opacity 0.4s ease-in-out;
 }
 
 /* Title in the Popup */
@@ -81,13 +80,78 @@
   color: #ddd;
 }
 
-/* Show Popup Below the Image on Hover */
+/* Show Popup Inside the Card on Hover */
 .hairstyle-card:hover .hairstyle-details {
   opacity: 1;
   visibility: visible;
-  bottom: -20px; /* Moves up smoothly below the image */
 }
 
 .hairstyle-card:hover {
   transform: scale(1.05);
+}
+
+/* Media Queries */
+
+/* Tablet Devices (768px - 1024px) */
+@media (max-width: 1024px) {
+  .hairstyle-container {
+    padding: 80px 20px 20px; /* Adjusted top padding for tablet */
+  }
+
+  .title {
+    font-size: 2rem;
+    margin-top: 80px; /* Adjusted top margin */
+    margin-bottom: 50px;
+  }
+
+  .hairstyle-scroll {
+    gap: 15px;
+  }
+
+  .hairstyle-card {
+    width: 200px; /* Slightly smaller cards */
+    height: 300px;
+  }
+
+  .hairstyle-details h3 {
+    font-size: 20px;
+  }
+
+  .hairstyle-details p {
+    font-size: 14px;
+  }
+}
+
+/* Mobile Devices (up to 767px) */
+@media (max-width: 767px) {
+  .hairstyle-container {
+    padding: 60px 10px 10px; /* Adjusted top padding for mobile */
+  }
+
+  .title {
+    font-size: 1.8rem;
+    margin-bottom: 25px;
+    margin-top: 2px ;
+  }
+
+  .hairstyle-scroll {
+    gap: 10px;
+  }
+
+  .hairstyle-card {
+    width: 150px; /* Smaller cards for mobile */
+    height: 250px;
+  }
+
+  .hairstyle-details {
+    padding: 10px;
+  }
+
+  .hairstyle-details h3 {
+    font-size: 18px;
+  }
+
+  .hairstyle-details p {
+    font-size: 9px;
+  }
 }

@@ -3,8 +3,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 90vh; /* Full height */
-  background: linear-gradient(to right,#e39a65, #c66a00); /* Smooth gradient */
+  min-height: 100vh; /* Ensure full height */
+  background: linear-gradient(to right, #e39a65, #c66a00); /* Smooth gradient */
   background-size: 200% 200%;
   animation: gradientAnimation 5s ease infinite;
   padding: 40px 10px;
@@ -25,10 +25,8 @@
   width: 45%;
   max-width: 800px;
   text-align: center;
-  margin: 100px auto; /* Push it down from the top */
+  margin: 70px auto; /* Push it down from the top */
 }
-
-
 
 /* Contact Title */
 .contact-card h1 {
@@ -41,9 +39,10 @@
 /* Contact Info */
 .contact-info {
   text-align: left;
-  font-size: 18px;
+  font-size: 19px;
   line-height: 1.6;
   margin-bottom: 20px;
+  color:#333;
 }
 
 .contact-info .icon {
@@ -90,19 +89,61 @@
   background: #e64a19;
 }
 
-
-
 /* Make sure it stays inside the main container */
 .contact-container, .services-container, .location-container {
   position: relative; /* Ensures Back button is within the container */
   padding-top: 60px; /* Avoid overlap with content */
 }
-
+/* Social Media Styling */
+.social-media {
+  text-align: center;
+  margin-top: 20px;
+  }
+  
+  .social-media h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+  color: #444;
+  }
+  
+  .social-icon {
+  display: inline-flex;
+  align-items: center;
+  margin: 5px;
+  text-decoration: none;
+  padding: 8px 15px;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #fff;
+  transition: 0.3s;
+  }
+  
+  .social-icon svg {
+  margin-right: 8px;
+  font-size: 20px;
+  }
+  
+  .gmail {
+  background-color: #db4437;
+  }
+  
+  .facebook {
+  background-color: #1877f2;
+  }
+  
+  .instagram {
+  background-color:#f450ad;
+  }
+  
+  .social-icon:hover {
+  opacity: 0.8;
+  }
 /* Responsive Styles */
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .contact-card {
-    width: 90%;
-    padding: 20px;
+    width: 80%;
+    padding: 25px;
   }
 
   .contact-card h1 {
@@ -115,47 +156,34 @@
     padding: 10px;
   }
 }
-/* Social Media Styling */
-.social-media {
-  text-align: center;
-  margin-top: 20px;
-}
 
-.social-media h3 {
-  font-size: 18px;
-  margin-bottom: 10px;
-}
+@media (max-width: 767px) {
+  .contact-card {
+    margin-top: 10px;
+    width: 95%;
+    padding: 20px;
+  }
 
-.social-icon {
-  display: inline-flex;
-  align-items: center;
-  margin: 5px;
-  text-decoration: none;
-  padding: 8px 15px;
-  border-radius: 5px;
-  font-size: 16px;
-  font-weight: bold;
-  color: #fff;
-  transition: 0.3s;
-}
+  .contact-card h1 {
+    font-size: 22px;
+  }
 
-.social-icon svg {
-  margin-right: 8px;
-  font-size: 20px;
-}
+  .contact-info {
+    font-size: 16px;
+  }
 
-.gmail {
-  background-color: #db4437;
-}
+  .contact-form h2 {
+    font-size: 20px;
+  }
 
-.facebook {
-  background-color: #1877f2;
-}
+  .contact-form input,
+  .contact-form textarea {
+    font-size: 14px;
+    padding: 10px;
+  }
 
-.instagram {
-  background-color:#f450ad;
-}
-
-.social-icon:hover {
-  opacity: 0.8;
+  .contact-form button {
+    font-size: 16px;
+    padding: 11px;
+  }
 }

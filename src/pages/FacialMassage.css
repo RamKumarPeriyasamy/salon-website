@@ -1,144 +1,217 @@
 /* Background: Dark Luxury Feel */
 .facial-massage-container {
-    background: linear-gradient(135deg, #2C3E50, #34495E);
-    background-size: 200% 200%;
-    animation: gradientAnimation 5s ease infinite;
-    min-height: 100vh;
-    padding: 60px 30px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    font-family: "Poppins", sans-serif;
+  background: linear-gradient(135deg, #2c3e50, #34495e);
+  background-size: 200% 200%;
+  animation: gradientAnimation 5s ease infinite;
+  min-height: 100vh;
+  padding: 80px 20px 40px; /* Adjusted padding for navbar */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: "Poppins", sans-serif;
+}
+
+@keyframes gradientAnimation {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Title: Gold Luxury */
+.page-title {
+  font-size: 2.5rem;
+  color: #ffcc00;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* Subtitle: Light Contrast */
+.page-description {
+  font-size: 1.1rem;
+  color: #f1f1f1;
+  opacity: 0.8;
+  max-width: 700px;
+  text-align: center;
+  line-height: 1.6;
+  margin-bottom: 40px;
+}
+
+/* Section Titles */
+.section-title {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #ffcc00;
+  text-transform: uppercase;
+  margin-bottom: 25px;
+  text-align: center;
+}
+
+/* Grid Layout */
+.service-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; /* Center the cards horizontally */
+  gap: 20px;
+  width: 100%; /* Ensure the grid takes full width */
+}
+
+/* Flip Card Container */
+.service-card {
+  perspective: 1000px;
+  width: 230px; /* Balanced Size */
+  height: 320px;
+  border-radius: 12px;
+  transition: transform 0.3s;
+  cursor: pointer;
+}
+
+/* Flip Effect */
+.service-card:hover .card-inner {
+  transform: rotateY(180deg);
+}
+
+/* Inner Flip Structure */
+.card-inner {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.6s ease-in-out;
+}
+
+/* Front Side (Image) */
+.card-front,
+.card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 12px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+}
+
+/* Front Side */
+.card-front {
+  background: #1e272e;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Image Display - FIXED */
+.service-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Back Side (Details) */
+.card-back {
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  transform: rotateY(180deg);
+  padding: 15px;
+}
+
+/* Title Inside the Flip Card */
+.card-back h4 {
+  font-size: 20px;
+  color: #ffcc00;
+  margin-bottom: 8px;
+}
+
+/* Description */
+.card-back p {
+  font-size: 14px;
+  color: #ddd;
+}
+
+/* Hover Glow Effect */
+.service-card:hover {
+  transform: scale(1.06);
+  box-shadow: 0 8px 18px rgba(0, 204, 255, 0.4);
+}
+
+/* Media Queries */
+
+/* Tablet Devices (768px - 1024px) */
+@media (max-width: 1024px) {
+  .facial-massage-container {
+    padding: 60px 20px 30px; /* Adjusted padding for tablet */
   }
-  
-  @keyframes gradientAnimation {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-  }
-  /* Title: Gold Luxury */
+
   .page-title {
-    font-size: 2.8rem;
-    color: #ffcc00;
-    font-weight: bold;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    margin-bottom: 20px;
-    text-align: center;
+    font-size: 2.2rem;
   }
-  
-  /* Subtitle: Light Contrast */
+
   .page-description {
-    font-size: 1.2rem;
-    color: #f1f1f1;
-    opacity: 0.8;
-    max-width: 700px;
-    text-align: center;
-    line-height: 1.6;
-    margin-bottom: 40px;
+    font-size: 1rem;
+    max-width: 600px;
   }
-  
-  /* Section Titles */
+
   .section-title {
-    font-size: 2rem;
-    font-weight: bold;
-    color: #ffcc00;
-    text-transform: uppercase;
-    margin-bottom: 25px;
+    font-size: 1.8rem;
   }
-  
-  /* Grid Layout */
-  .service-grid {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
-  }
-  
-  /* Flip Card Container */
+
   .service-card {
-    perspective: 1000px;
-    width: 230px; /* Balanced Size */
-    height: 320px;
-    border-radius: 12px;
-    transition: transform 0.3s;
-    cursor: pointer;
+    width: 200px; /* Slightly smaller cards */
+    height: 280px;
   }
-  
-  /* Flip Effect */
-  .service-card:hover .card-inner {
-    transform: rotateY(180deg);
-  }
-  
-  /* Inner Flip Structure */
-  .card-inner {
-    width: 100%;
-    height: 100%;
-    position: relative;
-    transform-style: preserve-3d;
-    transition: transform 0.6s ease-in-out;
-  }
-  
-  /* Front Side (Image) */
-  .card-front,
-  .card-back {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    backface-visibility: hidden;
-    border-radius: 12px;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-    overflow: hidden;
-  }
-  
-  /* Front Side */
-  .card-front {
-    background: #1e272e;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  /* Image Display - FIXED */
-  .service-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-  
-  /* Back Side (Details) */
-  .card-back {
-    background: rgba(0, 0, 0, 0.8);
-    color: white;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    transform: rotateY(180deg);
-    padding: 15px;
-  }
-  
-  /* Title Inside the Flip Card */
+
   .card-back h4 {
-    font-size: 20px;
-    color: #ffcc00;
-    margin-bottom: 8px;
+    font-size: 18px;
   }
-  
-  /* Description */
+
   .card-back p {
-    font-size: 14px;
-    color: #ddd;
+    font-size: 13px;
   }
-  
-  /* Hover Glow Effect */
-  .service-card:hover {
-    transform: scale(1.06);
-    box-shadow: 0 8px 18px rgba(0, 204, 255, 0.4);
+}
+
+/* Mobile Devices (up to 767px) */
+@media (max-width: 767px) {
+  .facial-massage-container {
+    padding: 50px 15px 20px; /* Adjusted padding for mobile */
   }
 
+  .page-title {
+    font-size: 1.8rem;
+  }
 
-  
+  .page-description {
+    font-size: 0.9rem;
+    max-width: 90%;
+  }
 
-  
+  .section-title {
+    font-size: 1.5rem;
+  }
+
+  .service-card {
+    width: 150px; /* Smaller cards for mobile */
+    height: 220px;
+    margin-left: -1px; /* Adjusted margin for better alignment */
+    margin-bottom: 5px;
+  }
+
+  .card-back h4 {
+    font-size: 16px;
+  }
+
+  .card-back p {
+    font-size: 12px;
+  }
+
+  .service-grid {
+    gap: 15px; /* Reduced gap for mobile */
+    justify-content: center; /* Ensure cards are centered */
+  }
+}

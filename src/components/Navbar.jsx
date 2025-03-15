@@ -4,9 +4,10 @@ import './Navbar.css';
 import logo from '../assets/logo4.png'; // Ensure the correct path
 
 const Navbar = () => {
-  // Function to handle redirection
-  const handleRedirect = (url) => {
-    window.location.href = url; // Redirect to the specified URL
+  const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+
+  const handleToggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
   };
 
   return (
@@ -18,26 +19,32 @@ const Navbar = () => {
         </Link>
       </div>
 
-      {/* Navigation Links */}
-      <div className="nav-links">
-        <Link to="/">Home</Link>
-        <Link to="/services">Services</Link>
-        <Link to="/contact">Contact Us</Link>
-        <Link to="/location">Location</Link>
-        <Link to="/about">About Us</Link>
+      {/* Mobile Menu Toggle */}
+      <button
+        className={`mobile-menu-toggle ${isMenuOpen ? 'active' : ''}`}
+        onClick={handleToggleMenu}
+      >
+        <span></span>
+      </button>
 
+      {/* Navigation Links */}
+      <div className={`nav-links ${isMenuOpen ? 'active' : ''}`}>
+        <Link to="/" onClick={handleToggleMenu}>Home</Link>
+        <Link to="/services" onClick={handleToggleMenu}>Services</Link>
+        <Link to="/contact" onClick={handleToggleMenu}>Contact</Link>
+        <Link to="/location" onClick={handleToggleMenu}>Location</Link>
+        <Link to="/about" onClick={handleToggleMenu}>About</Link>
         {/* Appointment Button */}
         <button
           className="nav-button appointment"
-          onClick={() => handleRedirect('http://localhost:8001/')}
+          onClick={() => (window.location.href = 'http://localhost:8001/')}
         >
           Appointment
         </button>
-
         {/* Admin Button */}
         <button
           className="nav-button admin"
-          onClick={() => handleRedirect('http://localhost:8002/')}
+          onClick={() => (window.location.href = 'http://localhost:8002/')}
         >
           Admin
         </button>

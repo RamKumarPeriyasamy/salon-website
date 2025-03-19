@@ -1,8 +1,8 @@
+import React, { useState } from "react";
 import axios from "axios";
-import { useState } from "react";
-import "./Booking.css"; 
-import logo from "../assets/logo4.png"; 
-import BackButton from "../components/BackButton"; 
+import "./Booking.css";
+import logo from "../assets/logo4.png";
+import BackButton from "../components/BackButton";
 
 const API_URL = import.meta.env.VITE_BACKEND_API;
 
@@ -10,12 +10,36 @@ function Booking() {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [countryCode, setCountryCode] = useState("+91");
-  const [date, setDate] = useState("");
+  const [date, setDate] = useState(""); // Controlled state for ISO date (YYYY-MM-DD)
+  const [displayDate, setDisplayDate] = useState(""); // Display date in DD-MM-YYYY format
   const [time, setTime] = useState("");
   const [location, setLocation] = useState("");
   const [stylist, setStylist] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+
+  // ✅ Function to get today's date in YYYY-MM-DD format
+  const getTodayDate = () => {
+    const today = new Date();
+    const year = today.getFullYear();
+    const month = String(today.getMonth() + 1).padStart(2, "0"); // Months are 0-indexed
+    const day = String(today.getDate()).padStart(2, "0");
+    return `${year}-${month}-${day}`;
+  };
+
+  // ✅ Convert ISO date (YYYY-MM-DD) to DD-MM-YYYY format
+  const formatDateForDisplay = (isoDate) => {
+    if (!isoDate) return ""; // Handle empty dates
+    const [year, month, day] = isoDate.split("-");
+    return `${day}-${month}-${year}`;
+  };
+
+  // ✅ Update both ISO and display date when a new date is selected
+  const handleDateChange = (e) => {
+    const isoDate = e.target.value; // Raw ISO date (YYYY-MM-DD)
+    setDate(isoDate); // Store ISO date for backend
+    setDisplayDate(formatDateForDisplay(isoDate)); // Format and store display date
+  };
 
   // ✅ Validate 10-digit phone number
   const validatePhoneNumber = (num) => /^[0-9]{10}$/.test(num);
@@ -59,7 +83,7 @@ function Booking() {
     const appointmentData = {
       name,
       phone: `${countryCode} ${phone}`,
-      date,
+      date, // Use the ISO date (YYYY-MM-DD) for backend
       time,
       location,
       stylist,
@@ -78,6 +102,7 @@ function Booking() {
       setPhone("");
       setCountryCode("+91");
       setDate("");
+      setDisplayDate(""); // Clear the display date
       setTime("");
       setLocation("");
       setStylist("");
@@ -98,7 +123,7 @@ function Booking() {
         </div>
         <h1 className="booking-title">📅 Book Your Appointment</h1>
 
-        {error && <p className="error-message">{error}</p>} 
+        {error && <p className="error-message">{error}</p>}
 
         <form onSubmit={handleSubmit} className="booking-form">
           {/* Name Input */}
@@ -129,14 +154,28 @@ function Booking() {
             />
           </div>
 
-          {/* Date Picker */}
-          <input
-            type="date"
-            value={date}
-            onChange={(e) => setDate(e.target.value)}
-            className="booking-input"
-            required
-          />
+          {/* Date Picker with Label on the Same Line */}
+          <div style={{ display: "flex", alignItems: "center", marginBottom: "15px" }}>
+            <label htmlFor="appointment-date" style={{ fontSize: "14px", color: "#555", marginRight: "10px" }}>
+              Appointment Date:
+            </label>
+            <input
+              id="appointment-date"
+              type="date"
+              value={date}
+              onChange={handleDateChange}
+              className="booking-input"
+              min={getTodayDate()} // Restrict selection to today or future dates
+              required
+              style={{ flex: 1 }} // Make the input field take up remaining space
+            />
+          </div>
+
+          {displayDate && (
+            <p style={{ fontSize: "12px", color: "#555", marginTop: "5px" }}>
+              Selected Date: <strong>{displayDate}</strong>
+            </p>
+          )}
 
           {/* Time Picker */}
           <select

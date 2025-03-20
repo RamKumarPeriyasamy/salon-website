@@ -71,7 +71,7 @@ const Contact = () => {
         <div className="social-media">
           <h3>Follow Us</h3>
           <a
-            href="mailto:periyasamy1801@gmail.com"
+            href="mailto:sundaramsalons@gmail.com"
             target="_blank"
             rel="noopener noreferrer"
             className="social-icon gmail"

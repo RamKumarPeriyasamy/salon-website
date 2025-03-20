@@ -78,7 +78,7 @@
 }
 
 .nav-links a:hover {
-  color: #ff9800;
+  color: #f3d4a6;
 }
 
 /* Appointment Button - Luxury Design */
@@ -127,15 +127,14 @@
   opacity: 0;
 }
 
-/* Mobile Menu Toggle */
+/* Mobile Menu Toggle - FIXED POSITIONING */
 .mobile-menu-toggle {
   display: none; /* Hidden by default */
-  position: absolute;
-  right: 20px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 40px;
-  height: 40px;
+  position: fixed; /* Changed to fixed position */
+  left: 15px; /* Left positioning */
+  top: 15px; /* Top positioning */
+  width: 43px;
+  height: 39px;
   background: transparent;
   border: none;
   cursor: pointer;
@@ -147,11 +146,12 @@
 .mobile-menu-toggle span {
   display: block;
   width: 100%;
-  height: 3px;
-  background: #ffffff;
+  height: 2px;
+  background: #ff9800; /* Orange for luxury */
   border-radius: 3px;
   position: relative;
   transition: all 0.3s ease-in-out;
+  box-shadow: 0 0 5px rgba(255, 152, 0, 0.5); /* Subtle glow */
 }
 
 .mobile-menu-toggle span::before,
@@ -159,19 +159,20 @@
   content: '';
   position: absolute;
   width: 100%;
-  height: 3px;
-  background: #ffffff;
+  height: 2px;
+  background: #ff9800; /* Orange for luxury */
   border-radius: 3px;
   left: 0;
   transition: all 0.3s ease-in-out;
+  box-shadow: 0 0 5px rgba(255, 152, 0, 0.5); /* Subtle glow */
 }
 
 .mobile-menu-toggle span::before {
-  top: -10px;
+  top: -8px;
 }
 
 .mobile-menu-toggle span::after {
-  bottom: -10px;
+  bottom: -8px;
 }
 
 /* Active State for Hamburger Menu */
@@ -191,42 +192,58 @@
 
 /* Media Queries */
 
-/* Remove Navbar Background for Mobile */
+/* Mobile Experience (max-width: 767px) */
 @media (max-width: 767px) {
   .navbar {
-    background: transparent !important; /* Remove background */
-    backdrop-filter: none !important; /* Remove blur effect */
-    box-shadow: none; /* Remove shadow */
-    padding: 15px 20px;
+    padding: 15px;
     flex-direction: column;
     align-items: flex-start;
     height: auto;
+    /* Add elegant gradient background */
+    background: linear-gradient(135deg, rgba(25, 25, 50, 0), rgba(40, 20, 60, 0)) !important;
+    backdrop-filter: blur(8px) !important;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0);
   }
 
+  /* Custom Background Icon */
+  .navbar::before {
+    content: "";
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    width: 40px;
+    height: 40px;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50" fill="none" stroke="rgba(255,152,0,0.3)" stroke-width="2"><path d="M10,10 L40,40 M10,40 L40,10" opacity="0.2"/><circle cx="25" cy="25" r="20" fill="none" stroke-dasharray="5,3" opacity="0.15"/></svg>');
+    background-size: contain;
+    background-repeat: no-repeat;
+    opacity: 0.6;
+    z-index: -1;
+  }
+
+  /* Display the toggle button */
   .mobile-menu-toggle {
-    display: block; /* Show hamburger menu */
-    left: 20px;
-    top: 25px;
-    width: 46px;
-    height: 56px;
+    display: block;
+    /* Position is already set in the main styles */
   }
 
   .logo-container {
     display: none; /* Hide logo on mobile */
   }
 
-  /* Hide nav links by default */
+  /* Redesigned Mobile Menu */
   .nav-links {
     display: none;
     flex-direction: column;
     width: 100%;
-    gap: 12px;
-    margin: 15px 0;
-    animation: fadeIn 0.4s ease-out;
-    background: rgba(41, 21, 150, 0.879); /* Semi-transparent dark background */
-    border-radius: 16px; /* Rounded corners for the dropdown */
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
-    padding: 15px;
+    gap: 8px; /* Reduced gap for mobile */
+    margin-top: 45px; /* Increased margin to account for fixed toggle */
+    animation: slideIn 0.4s ease-out;
+    background: rgba(20, 20, 40, 0.95);
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3),
+                inset 0 1px 3px rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 12px;
   }
 
   /* Show nav links when active */
@@ -234,7 +251,7 @@
     display: flex;
   }
 
-  @keyframes fadeIn {
+  @keyframes slideIn {
     from {
       opacity: 0;
       transform: translateY(-10px);
@@ -246,57 +263,96 @@
   }
 
   .nav-links a {
-    font-size: 11px;
-    padding: 12px 15px;
+    font-size: 14px; /* Smaller font size */
+    padding: 10px 15px; /* Reduced padding */
     width: 100%;
-    text-align: center;
-    background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(5px);
-    border-radius: 16px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    text-align: left; /* Left-aligned text */
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    margin-bottom: 2px;
+    border-left: 2px solid transparent;
+  }
+
+  /* Add icons to nav links */
+  .nav-links a::before {
+    content: "•";
+    margin-right: 8px;
+    color: #ff9800;
+    font-size: 18px;
+    opacity: 0.8;
   }
 
   .nav-links a:hover {
     background: rgba(255, 152, 0, 0.1);
-    transform: translateX(5px);
+    transform: translateX(3px);
+    border-left: 2px solid #ff9800;
+  }
+
+  .nav-links a::after {
+    display: none; /* Remove underline effect on mobile */
   }
 
   .nav-button.appointment,
   .nav-button.admin {
     width: 100%;
-    padding: 14px 20px;
-    font-size: 16px;
-    margin: 5px 0;
-    text-transform: uppercase;
+    padding: 10px 15px; /* Smaller padding */
+    font-size: 14px; /* Smaller font size */
+    margin: 3px 0;
+    border-radius: 8px;
+    text-align: center;
     letter-spacing: 1px;
-    border-radius: 16px;
+  }
+
+  /* Luxury shine effect on buttons */
+  .nav-button.appointment,
+  .nav-button.admin {
+    background-size: 200% 100%;
+    background-position: 100% 0;
+    transition: background-position 0.5s, transform 0.3s;
+  }
+
+  .nav-button.appointment {
+    background-image: linear-gradient(135deg, #ff9800, #ff5722, #ff9800);
+  }
+
+  .nav-button.admin {
+    background-image: linear-gradient(135deg, #4caf50, #8bc34a, #4caf50);
+  }
+
+  .nav-button.appointment:hover,
+  .nav-button.admin:hover {
+    background-position: 0 0;
+    transform: scale(1.02); /* Subtle scale effect */
   }
 }
 
 /* Tablet Experience (768px - 1024px) */
-@media (max-width: 1024px) {
+@media (min-width: 768px) and (max-width: 1024px) {
   .navbar {
-    padding: 20px 35px;
-    background: rgba(255, 255, 255, 0.15); /* Darker, more premium background */
-    backdrop-filter: blur(15px); /* Enhanced blur effect */
-    box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.25), 0px 2px 6px rgba(255, 152, 0, 0.15);
-    flex-wrap: wrap; /* Allow wrapping for buttons */
+    padding: 15px 30px;
+    background: rgba(25, 25, 50, 0);
+    backdrop-filter: blur(15px);
+    box-shadow: 0px 8px 24px rgba(0, 0, 0, 0), 0px 2px 6px rgba(255, 152, 0, 0.15);
+    flex-wrap: wrap;
   }
 
   .logo-container {
-    display: none; /* Hide logo on tablet */
+    display: none;
   }
 
   .nav-links {
-    gap: 15px;
-    flex-wrap: wrap; /* Allow wrapping for links */
-    justify-content: center; /* Center the links horizontally */
-    width: 100%; /* Take full width */
+    gap: 12px;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
   }
 
   .nav-links a {
-    font-size: 19px;
-    padding: 11px 32px;
+    font-size: 16px;
+    padding: 10px 20px;
     border-radius: 25px;
     backdrop-filter: blur(5px);
     background: rgba(255, 255, 255, 0.05);
@@ -312,28 +368,28 @@
   /* Centered Buttons Container */
   .nav-buttons {
     display: flex;
-    justify-content: center; /* Center buttons horizontally */
-    gap: 15px; /* Space between buttons */
-    margin-top: 15px; /* Space above buttons */
-    width: 100%; /* Full width for proper alignment */
+    justify-content: center;
+    gap: 15px;
+    margin-top: 15px;
+    width: 100%;
   }
 
   /* Slightly Larger Buttons */
   .nav-button.appointment,
   .nav-button.admin {
-    padding: 12px 28px; /* Increased padding */
-    font-size: 18px; /* Slightly larger font */
+    padding: 12px 28px;
+    font-size: 16px;
     text-transform: uppercase;
     letter-spacing: 1px;
     backdrop-filter: blur(5px);
-    border-radius: 30px; /* Rounded corners */
+    border-radius: 25px;
     transition: all 0.3s ease-in-out;
   }
 
   /* Hover Effect for Buttons */
   .nav-button.appointment:hover,
   .nav-button.admin:hover {
-    transform: scale(1.05); /* Slight zoom effect */
+    transform: scale(1.05);
     box-shadow: 0 6px 20px rgba(255, 152, 0, 0.6);
   }
 }

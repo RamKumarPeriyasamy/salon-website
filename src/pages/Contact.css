@@ -14,7 +14,7 @@ body {
 .contact-container {
   max-width: 1200px;
   margin: 8rem auto 3rem; /* Add top margin to avoid overlap with navbar */
-  padding:3px 10rem;
+  padding: 0 1rem; /* Adjust padding for mobile screens */
   font-family: "Playfair Display", "Times New Roman", serif;
 }
 
@@ -24,7 +24,8 @@ body {
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); /* Stronger shadow for contrast */
   overflow: hidden;
   position: relative;
-  padding: 2.5rem;
+  padding: 2rem; /* Reduced padding for mobile */
+  margin: 0 auto; /* Center the card */
 }
 
 .contact-card::before {
@@ -102,7 +103,7 @@ body {
 .social-icon {
   display: inline-flex;
   align-items: center;
-  margin-right: 1.5rem;
+  margin-right: 1rem;
   margin-bottom: 1rem;
   padding: 0.8rem 1.5rem;
   border-radius: 30px;
@@ -242,36 +243,49 @@ body {
 
 /* Responsive Design */
 @media (max-width: 768px) {
+  /* General Adjustments */
   .contact-container {
-    margin-top: 8rem; /* Increase top margin for smaller screens */
+    margin-top: 4rem; /* Reduce top margin for mobile */
+    padding: 0 1rem; /* Tighten padding for smaller screens */
   }
 
   .contact-card {
-    padding: 1.5rem;
+    padding: 1.5rem; /* Reduce padding inside the card */
+    max-width: 100%; /* Make the card take full width */
   }
 
   .contact-card h1 {
-    font-size: 2rem;
+    font-size: 2rem; /* Smaller heading for mobile */
   }
 
   .contact-card h2,
   .contact-card h3 {
-    font-size: 1.5rem;
+    font-size: 1.5rem; /* Smaller subheadings */
   }
 
+  /* Social Icons */
   .social-icon {
-    padding: 0.6rem 1.2rem;
-    font-size: 0.9rem;
+    padding: 0.6rem 1.2rem; /* Reduce padding for icons */
+    font-size: 0.9rem; /* Smaller text for icons */
   }
-}
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(-10px);
+  /* Form Adjustments */
+  .contact-form {
+    padding: 1.5rem; /* Reduce padding inside the form */
   }
-  to {
-    opacity: 1;
-    transform: translateY(0);
+
+  .contact-form input,
+  .contact-form textarea {
+    font-size: 0.9rem; /* Smaller input fields */
+  }
+
+  .contact-form button {
+    font-size: 1rem; /* Smaller button text */
+    padding: 0.8rem 1.5rem; /* Reduce button padding */
+  }
+
+  /* Contact Info */
+  .contact-info p {
+    font-size: 0.9rem; /* Smaller text for contact info */
   }
 }

@@ -1,143 +1,252 @@
-/* About Page Styling */
+/* About.css - Premium UI with sophisticated background and updated logo styling */
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap');
+
 .about-container {
+  min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh; /* Allow content to expand beyond viewport height */
-  background: linear-gradient(to right, #542658, #49534f);
-  color: rgb(252, 250, 250);
-  text-align: center;
-  padding: 20px;
+  position: relative;
+  overflow: hidden;
+  padding: 3rem 1rem;
+  background-color: #060608;
+  color: #fff;
+  /* Adjusted to add padding-top instead of margin-top for better spacing with navbar */
+  padding-top: calc(3rem + 60px); /* 60px accounts for navbar height with some buffer */
+  margin-top: 0; /* Remove the fixed margin-top */
 }
 
-/* About Content with Glassmorphism */
+/* Luxury background effect */
+.about-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at 30% 50%, rgba(43, 31, 61, 0.8), transparent 70%),
+              radial-gradient(circle at 70% 50%, rgba(56, 27, 54, 0.8), transparent 70%);
+  z-index: 0;
+  animation: backgroundShift 20s infinite alternate ease-in-out;
+}
+
+@keyframes backgroundShift {
+  0% {
+    background-position: 0% 0%;
+  }
+  100% {
+    background-position: 100% 100%;
+  }
+}
+
+/* Light beams effect */
+.about-container::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0 L100 100 M100 0 L0 100' stroke='%23ffffff' stroke-width='0.2' stroke-opacity='0.1'/%3E%3C/svg%3E");
+  opacity: 0.3;
+  z-index: 0;
+  animation: lightBeams 15s infinite linear;
+}
+
+@keyframes lightBeams {
+  0% { background-position: 0 0; }
+  100% { background-position: 500px 500px; }
+}
+
 .about-content {
-  background: rgba(1, 0, 0, 0.15);
-  padding: 40px;
-  border-radius: 15px;
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
-  max-width: 1000px;
-  width: 90%;
-  backdrop-filter: blur(15px);
-  border: 2px solid rgba(255, 255, 255, 0.2);
+  position: relative;
+  z-index: 1;
+  max-width: 900px;
+  background: rgba(14, 14, 20, 0.8);
+  backdrop-filter: blur(10px);
+  padding: 3rem;
+  border-radius: 10px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6),
+              0 0 0 1px rgba(255, 255, 255, 0.08),
+              0 0 40px rgba(138, 43, 226, 0.2);
+  text-align: center;
+  transition: transform 0.5s ease, box-shadow 0.5s ease;
 }
 
-/* Logo Styling */
+.about-content:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.7),
+              0 0 0 1px rgba(255, 255, 255, 0.1),
+              0 0 50px rgba(138, 43, 226, 0.3);
+}
+
+/* Updated logo styling - more subtle and sophisticated */
 .logo-wrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 20px;
+  margin-bottom: 2rem;
+  position: relative;
+  display: inline-block;
+}
+
+.logo-wrapper::after {
+  content: '';
+  position: absolute;
+  top: -8px;
+  left: -8px;
+  right: -8px;
+  bottom: -8px;
+  border-radius: 50%;
+  background: linear-gradient(45deg, rgba(72, 52, 80, 0.6), rgba(93, 63, 107, 0.6));
+  z-index: -1;
+  filter: blur(8px);
+  animation: logoGlow 4s infinite alternate;
+}
+
+@keyframes logoGlow {
+  0% {
+    opacity: 0.4;
+    filter: blur(8px);
+  }
+  100% {
+    opacity: 0.6;
+    filter: blur(12px);
+  }
 }
 
 .about-logo {
-  width: 150px;
+  max-width: 180px;
   height: auto;
-  filter: drop-shadow(0 0 15px rgba(245, 244, 244, 0.8));
+  border-radius: 50%;
+  padding: 4px;
+  background: linear-gradient(45deg, #3a2b46, #4e3560);
+  box-shadow: 0 0 15px rgba(93, 63, 107, 0.5);
   transition: transform 0.3s ease;
 }
 
 .about-logo:hover {
-  transform: scale(1.1);
+  transform: scale(1.05);
 }
 
-/* Typography */
+/* Text styling */
 .about-title {
-  font-size: 2.5rem;
-  margin-bottom: 15px;
-  background: linear-gradient(to right, #ffffffe2, #f79606);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 3.5rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  color: #fff;
+  text-shadow: 0 2px 10px rgba(138, 43, 226, 0.3);
+  letter-spacing: 2px;
+  position: relative;
+  display: inline-block;
+}
+
+.about-title::after {
+  content: '';
+  display: block;
+  width: 80%;
+  height: 1px;
+  background: linear-gradient(to right, transparent, #8a2be2, transparent);
+  margin: 0.5rem auto 0;
 }
 
 .about-text {
+  font-family: 'Montserrat', sans-serif;
   font-size: 1.1rem;
-  line-height: 1.7;
-  margin-bottom: 25px;
-  opacity: 0.9;
+  line-height: 1.8;
+  margin-bottom: 2.5rem;
+  color: #e6e6e6;
+  letter-spacing: 0.5px;
+  text-align: justify;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
 }
 
-/* Home Button Styling */
+.about-text strong {
+  color: #9370db;
+  font-weight: 600;
+}
+
+/* Button styling */
 .home-button {
-  background: linear-gradient(90deg, #ea7907, #FF9800);
-  color: rgb(69, 64, 64);
-  padding: 14px 25px;
+  font-family: 'Montserrat', sans-serif;
+  background: linear-gradient(45deg, #8a2be2, #4b0082);
+  color: white;
   border: none;
-  border-radius: 12px;
-  font-size: 1.2rem;
+  padding: 0.8rem 2.5rem;
+  font-size: 1rem;
+  border-radius: 50px;
   cursor: pointer;
   transition: all 0.3s ease;
-  box-shadow: 0 5px 20px rgba(255, 87, 34, 0.6);
+  letter-spacing: 1px;
+  font-weight: 500;
+  box-shadow: 0 4px 15px rgba(138, 43, 226, 0.5);
+  position: relative;
+  overflow: hidden;
+}
+
+.home-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: 0.5s;
 }
 
 .home-button:hover {
-  background: linear-gradient(90deg, #FF7043, #FFA726);
-  transform: scale(1.08);
+  transform: translateY(-3px);
+  box-shadow: 0 7px 20px rgba(138, 43, 226, 0.7);
 }
 
-/* 🌐 Responsive Design */
+.home-button:hover::before {
+  left: 100%;
+}
 
-/* Tablet (768px - 1024px) */
-@media (min-width: 768px) and (max-width: 1024px) {
+.home-button:active {
+  transform: translateY(0);
+  box-shadow: 0 4px 8px rgba(138, 43, 226, 0.4);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
   .about-container {
-    min-height: 100vh; /* Ensure full height */
-    padding: 40px 20px;
+    padding-top: calc(2rem + 70px); /* Increased padding-top for navbar at tablet size */
   }
-
+  
   .about-content {
-    margin-top: 30px;
-    padding: 35px;
-    width: 95%;
+    padding: 2rem;
+    margin-top: -4rem; /* Add a bit more space at the top */
   }
-
+  
   .about-title {
-    font-size: 2.8rem;
+    font-size: 2.2rem;
   }
-
+  
   .about-text {
-    font-size: 1rem;
+    font-size: 0.8rem;
+    line-height: 1.7;
   }
-
+  
   .about-logo {
-    width: 130px;
-  }
-
-  .home-button {
-    font-size: 1rem;
-    padding: 12px 20px;
+    max-width: 130px;
   }
 }
 
-/* Mobile (up to 767px) */
-@media (max-width: 767px) {
+@media (max-width: 480px) {
   .about-container {
-    height: 100vh; /* Ensure full height */
-    padding: 30px 15px;
-    flex-direction: column;
+    padding-top: calc(1.5rem + 80px); /* Even more padding-top for smaller screens */
   }
-
+  
   .about-content {
-    padding: 30px;
-    width: 100%;
-    
+    padding: 1.5rem;
   }
-
+  
   .about-title {
-    font-size: 1.8rem;
-    margin-bottom: 10px;
+    font-size: 2rem;
   }
-
-  .about-text {
-    font-size: 0.89rem;
-    line-height: 1.5;
-  }
-
+  
   .about-logo {
-    width: 100px;
-  }
-
-  .home-button {
-    font-size: 0.9rem;
-    padding: 10px 18px;
+    max-width: 120px;
   }
 }

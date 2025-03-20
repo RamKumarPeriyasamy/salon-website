@@ -27,7 +27,7 @@ const Location = () => {
 
       {/* Address Details */}
       <div className="location-details">
-        <h3>💈 Sundaram Saloon</h3>
+        <h3>💈 Sundaram Salon</h3>
         <p>🏪 <strong>Address:</strong> 132, North Raja Street, Opp Nila Store, Mattakadai, Tuticorin - 1</p>
         <p>☎️ <strong>Contact:</strong> +91 97872 38247</p>
         <p>⏰ <strong>Opening Hours:</strong> 7 AM - 8 PM</p>

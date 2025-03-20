@@ -63,7 +63,7 @@
 .location-details h3 {
   font-size: 1.8rem;
   font-weight: bold;
-  color: #ffeb3b;
+  color: rgb(255, 215, 0);
 }
 
 .location-details p {

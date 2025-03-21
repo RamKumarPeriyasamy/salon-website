@@ -15,7 +15,7 @@ const Home = () => {
           Book an Appointment
         </Link>
         {/* New Home Button */}
-        <a href="http://localhost:8000/" className="home-button">
+        <a href="https://sundramsalons.netlify.app/" className="home-button">
           Home
         </a>
       </div>

@@ -16,7 +16,7 @@ app.use(express.json());
 const connectDB = async () => {
   try {
     // Use environment variable for MongoDB URI with fallback
-    const mongoURI = process.env.MONGO_URI || "mongodb://mongo:27017/salon";
+    const mongoURI = process.env.MONGO_URI || "mongodb://mongo:27017/salonDB";
     
     await mongoose.connect(mongoURI);
     console.log("✅ MongoDB Connected");

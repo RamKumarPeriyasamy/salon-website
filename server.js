@@ -12,12 +12,15 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+// Construct MongoDB URI using environment variables
+const mongoPassword = process.env.MONGO_PASSWORD;
+const mongoURI =
+  process.env.MONGO_URI.replace("${MONGO_PASSWORD}", mongoPassword) ||
+  "mongodb://mongo:27017/salonDB";
+
 // MongoDB Connection
 const connectDB = async () => {
   try {
-    // Use environment variable for MongoDB URI with fallback
-    const mongoURI = process.env.MONGO_URI || "mongodb://mongo:27017/salonDB";
-    
     await mongoose.connect(mongoURI);
     console.log("✅ MongoDB Connected");
   } catch (error) {
